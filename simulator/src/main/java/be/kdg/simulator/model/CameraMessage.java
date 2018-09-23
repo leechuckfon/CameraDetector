@@ -7,14 +7,23 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class CameraMessage {
-    private static int id=0;
+    private int id;
     private String licensePlate;
     private LocalDateTime timestamp;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSS");
-    public CameraMessage(String s, LocalDateTime now) {
-        id++;
+    private int delay = 10;
+
+    public CameraMessage(int i,String s, LocalDateTime now) {
+        id = i;
         licensePlate = s;
         timestamp = now;
+    }
+
+    public CameraMessage(int id, String licensePlate, LocalDateTime timestamp, int delay) {
+        this.id = id;
+        this.licensePlate = licensePlate;
+        this.timestamp = timestamp;
+        this.delay = delay;
     }
 
     @Override

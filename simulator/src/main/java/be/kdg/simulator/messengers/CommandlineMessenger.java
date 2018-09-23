@@ -24,6 +24,8 @@ public class CommandlineMessenger implements Messenger {
     @Override
     @Scheduled(fixedDelay = 1000L)
     public void sendMessage() {
-        System.out.println(messageGenerator.generate().toString());
+        if (messageGenerator.generate() != null) {
+            System.out.println(messageGenerator.generate().toString());
+        }
     }
 }
