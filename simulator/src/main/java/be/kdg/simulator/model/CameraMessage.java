@@ -3,24 +3,23 @@ package be.kdg.simulator.model;
 import javafx.scene.Camera;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class CameraMessage {
-    private int id;
+    private static int id=0;
     private String licensePlate;
     private LocalDateTime timestamp;
-
-    public CameraMessage(int i, String s, LocalDateTime now) {
-        id = i;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSS");
+    public CameraMessage(String s, LocalDateTime now) {
+        id++;
         licensePlate = s;
         timestamp = now;
     }
 
     @Override
-    // TODO: datum formatteren volgens dd-MM-yyyy HH:mm:ss:SSS
-    // Id: ID, Nummerplaat: NP, Timestamp: dd-MM-yyyy
     public java.lang.String toString() {
-        return String.format("ID: %d, Nummerplaat: %s, Timestamp: %s",getId(),getLicensePlate(),getTimestamp().toString());
+        return String.format("ID: %d, Nummerplaat: %s, Timestamp: %s",getId(),getLicensePlate(),getTimestamp().format(formatter));
     }
 
     @Override
