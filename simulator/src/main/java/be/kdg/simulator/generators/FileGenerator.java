@@ -14,8 +14,9 @@ import java.util.Scanner;
 @Component
 @ConditionalOnProperty(name = "generator.type", havingValue = "file")
 public class FileGenerator implements MessageGenerator{
+    @Value("${file.location}")
+    private String location;
 
-    private  @Value("${file.location}") String fileLocation;
 
     private File readableFile = new File("D:\\IdeaProjects\\cameraDetector\\simulator\\src\\main\\resources\\readFile\\FindMe.txt");
     private Scanner sc;
@@ -24,14 +25,15 @@ public class FileGenerator implements MessageGenerator{
         try {
             sc = new Scanner(readableFile);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
     }
 
 
     @Override
     public CameraMessage generate() {
-            while (sc.hasNext()) {
+
+        while (sc.hasNext()) {
                 String[] splittedLine = sc.nextLine().split(",");
                 return new CameraMessage(Integer.valueOf(splittedLine[0]),splittedLine[1],LocalDateTime.now(),Integer.valueOf(splittedLine[2]));
             }

@@ -22,7 +22,7 @@ public class CommandlineMessenger implements Messenger {
     }
 
     @Override
-    @Scheduled(fixedDelay = 1000L)
+    @Scheduled(fixedDelayString = "${frequentie}")
     public void sendMessage() {
         if (messageGenerator.generate() != null) {
             System.out.println(messageGenerator.generate().toString());

@@ -1,6 +1,7 @@
 package be.kdg.simulator;
 
 import be.kdg.simulator.generators.MessageGenerator;
+import be.kdg.simulator.messengers.QueueMessenger;
 import be.kdg.simulator.model.CameraMessage;
 import org.junit.Assert;
 import org.junit.Test;
@@ -16,6 +17,16 @@ public class SimulatorApplicationTests {
     @Autowired
     // dit is Field Injection
     private MessageGenerator messageGenerator;
+
+    @Autowired
+    // dit is Field Injection
+    private QueueMessenger qm;
+
+    @Test
+    public void testSend() {
+        qm.sendMessage();
+    }
+
 
     @Test
     public void testMessageGenerator() {

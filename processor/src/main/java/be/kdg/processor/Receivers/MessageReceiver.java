@@ -1,16 +1,35 @@
 package be.kdg.processor.Receivers;
 
-import be.kdg.processor.model.CameraMessage;
-import org.springframework.jms.annotation.JmsListener;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
+import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
+import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+/**
+ * Klasse MessageReceiver haalt messages af van de queue
+ */
+
 @Component
-public class MessageReceiver implements Receiver {
-    @Override
-    @JmsListener(destination = "test")
-    public void ReceiveMessage(CameraMessage cm) {
-        System.out.println(cm.toString());
+public class MessageReceiver {
+
+    @Bean
+    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+                                             MessageListenerAdapter listenerAdapter) {
+        SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+        container.setQueueNames("CMQueue");
+        container.setMessageListener(listenerAdapter);
+        return container;
     }
 
+    @Bean
+    MessageListenerAdapter listenerAdapter(MessageReceiver receiver) {
+        return new MessageListenerAdapter(receiver, "receiveMessage");
+    }
+
+    public void receiveMessage(String message) {
+        System.out.println("Received:" +message);
+    }
 
 }
