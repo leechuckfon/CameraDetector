@@ -1,7 +1,5 @@
 package be.kdg.simulator.model;
 
-import javafx.scene.Camera;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;

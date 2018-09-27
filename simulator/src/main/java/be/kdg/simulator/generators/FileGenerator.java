@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -33,7 +31,7 @@ public class FileGenerator implements MessageGenerator{
     @Override
     public CameraMessage generate() {
 
-        while (sc.hasNext()) {
+        if (sc.hasNext()) {
                 String[] splittedLine = sc.nextLine().split(",");
                 return new CameraMessage(Integer.valueOf(splittedLine[0]),splittedLine[1],LocalDateTime.now(),Integer.valueOf(splittedLine[2]));
             }

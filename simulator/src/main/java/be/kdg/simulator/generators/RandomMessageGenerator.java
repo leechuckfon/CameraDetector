@@ -22,15 +22,15 @@ public class RandomMessageGenerator implements MessageGenerator{
         //TODO: Randomize nummerplaat
 
         int eersteNummer = r.nextInt(9)+1;
-        String letters = "";
-        String laatsteNummers = "";
+        StringBuilder letters = new StringBuilder();
+        StringBuilder laatsteNummers = new StringBuilder();
         for (int i=0;i<3;i++) {
 
             int letter = r.nextInt(26)+'A';
-            letters += (char) letter;
+            letters.append((char) letter);
 
             int randomNummer = r.nextInt(9)+1;
-            laatsteNummers += randomNummer;
+            laatsteNummers.append(randomNummer);
 
         }
         return new CameraMessage(r.nextInt(s),eersteNummer + "-" + letters + "-" + laatsteNummers, LocalDateTime.now());
