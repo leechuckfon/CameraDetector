@@ -9,7 +9,7 @@ public class CameraMessage {
     private String licensePlate;
     private LocalDateTime timestamp;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSS");
-    private int delay = 10;
+    private long delay;
 
     public CameraMessage(int i,String s, LocalDateTime now) {
         id = i;
@@ -68,7 +68,7 @@ public class CameraMessage {
         this.timestamp = timestamp;
     }
 
-    public int getDelay() {
+    public Long getDelay() {
         return delay;
     }
 

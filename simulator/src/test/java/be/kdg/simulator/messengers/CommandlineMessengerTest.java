@@ -1,5 +1,6 @@
 package be.kdg.simulator.messengers;
 
+import be.kdg.simulator.generators.MessageGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ public class CommandlineMessengerTest {
 
     @Autowired
     private Messenger messenger;
+    @Autowired
+    private MessageGenerator gen;
 
     @Test
     public void sendMessage() {
-        messenger.sendMessage();
+        messenger.sendMessage(gen.generate());
     }
 }

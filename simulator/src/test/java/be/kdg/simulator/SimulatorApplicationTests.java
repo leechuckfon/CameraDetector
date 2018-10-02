@@ -18,15 +18,6 @@ public class SimulatorApplicationTests {
     // dit is Field Injection
     private MessageGenerator messageGenerator;
 
-    @Autowired
-    // dit is Field Injection
-    private QueueMessenger qm;
-
-    @Test
-    public void testSend() {
-        qm.sendMessage();
-    }
-
 
     @Test
     public void testMessageGenerator() {

@@ -1,5 +1,8 @@
 package be.kdg.processor.Receivers;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MessageReceiver {
+    private static final Logger LOGGER = LoggerFactory.getLogger(MessageReceiver.class);
 
     @Bean
     SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
@@ -29,7 +33,7 @@ public class MessageReceiver {
     }
 
     public void receiveMessage(String message) {
-        System.out.println("Received:" +message);
+        LOGGER.info("Received:" +message);
     }
 
 }

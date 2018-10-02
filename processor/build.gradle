@@ -30,6 +30,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-amqp")
     compile("org.apache.activemq:activemq-broker")
     compile("com.fasterxml.jackson.core:jackson-databind")
+    compile files('lib/camera-service-1.0.jar', 'libs/license-plate-service-1.0.jar')
+    compile group: 'javax.json', name: 'javax.json-api', version: '1.0'
+    compile group: 'org.glassfish', name: 'javax.json', version: '1.0.4'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     implementation 'junit:junit:4.12'
 }
