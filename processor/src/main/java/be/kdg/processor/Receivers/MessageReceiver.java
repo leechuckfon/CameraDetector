@@ -37,7 +37,7 @@ public class MessageReceiver {
     }
 
     public void receiveMessage(CameraMessage message) {
-        ;
+        
     }
 
 }
