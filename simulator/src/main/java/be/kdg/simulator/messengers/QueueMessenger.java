@@ -1,5 +1,6 @@
 package be.kdg.simulator.messengers;
 
+import be.kdg.simulator.config.XMLConverter;
 import be.kdg.simulator.generators.MessageGenerator;
 import be.kdg.simulator.Receivers.MessageReceiver;
 import be.kdg.simulator.model.CameraMessage;
@@ -7,7 +8,10 @@ import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MarshallingMessageConverter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -26,25 +30,11 @@ public class QueueMessenger implements Messenger {
         this.messageGenerator = messageGenerator;
     }
 
-    @Bean
-    Queue queue() {
-        return new Queue("CMQueue", true);
-    }
-
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("CameraTopic");
-    }
-
-    @Bean
-    Binding binding(Queue queue, TopicExchange exchange) {
-        return BindingBuilder.bind(queue).to(exchange).with("CM.*");
-    }
 
 
     @Override
     public void sendMessage(CameraMessage cm) {
-
-        rabbitTemplate.convertAndSend("CameraTopic","CM.test",cm.toString());
+        rabbitTemplate.setMessageConverter(new XMLConverter());
+        rabbitTemplate.convertAndSend("CameraTopic","CM.test",cm);
     }
 }

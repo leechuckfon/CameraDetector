@@ -1,27 +1,43 @@
 package be.kdg.processor.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class CameraMessage {
-    private int id;
-    private String licensePlate;
-    private LocalDateTime timestamp;
+    private final int id;
+    private final String licensePlate;
+    @JsonDeserialize(using = DeserializeLocalDateTime.class)
+    private final LocalDateTime timestamp;
+    private final long delay;
 
-    public CameraMessage(int i, String s, LocalDateTime now) {
-        id = i;
-        licensePlate = s;
-        timestamp = now;
+    public CameraMessage() {
+        id = -9999;
+        licensePlate = "X-XXX-XXX";
+        timestamp = LocalDateTime.now();
+        delay = -1;
+    }
+
+    public CameraMessage(int id, String licensePlate, LocalDateTime timestamp) {
+        this.id = id;
+        this.licensePlate = licensePlate;
+        this.timestamp = timestamp;
+        delay = -1;
+    }
+
+    public CameraMessage(int id, String licensePlate, LocalDateTime timestamp, long delay) {
+        this.id = id;
+        this.licensePlate = licensePlate;
+        this.timestamp = timestamp;
+        this.delay = delay;
     }
 
     @Override
-    // TODO: datum formatteren volgens dd-MM-yyyy HH:mm:ss:SSS
     public String toString() {
-        return "CameraMessage{" +
-                "id=" + id +
-                ", licensePlate='" + licensePlate + '\'' +
-                ", timestamp=" + timestamp +
-                '}';
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSS");
+        return String.format("ID: %d, Nummerplaat: %s, Timestamp: %s",getId(),getLicensePlate(),getTimestamp().format(formatter));
     }
 
     @Override
@@ -43,23 +59,18 @@ public class CameraMessage {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getLicensePlate() {
         return licensePlate;
     }
 
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
 
     public LocalDateTime getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+
+    public Long getDelay() {
+        return delay;
     }
+
 }

@@ -1,8 +1,11 @@
 package be.kdg.processor.Receivers;
 
 
+import be.kdg.processor.converter.XMLConverter;
+import be.kdg.processor.model.CameraMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -23,6 +26,7 @@ public class MessageReceiver {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
         container.setQueueNames("CMQueue");
+        listenerAdapter.setMessageConverter(new XMLConverter());
         container.setMessageListener(listenerAdapter);
         return container;
     }
@@ -32,8 +36,8 @@ public class MessageReceiver {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
 
-    public void receiveMessage(String message) {
-        LOGGER.info("Received:" +message);
+    public void receiveMessage(CameraMessage message) {
+        ;
     }
 
 }

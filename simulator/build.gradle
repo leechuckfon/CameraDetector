@@ -32,5 +32,7 @@ dependencies {
     compile("org.apache.activemq:activemq-broker")
     compile("com.fasterxml.jackson.core:jackson-databind")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.5'
+    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.9.0"
     implementation 'junit:junit:4.12'
 }

@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -23,6 +24,7 @@ public class FileGenerator implements MessageGenerator{
     private File readableFile;
     private List<CameraMessage> cmL;
 
+
     @Autowired
     public FileGenerator(@Value("${file_location}") String readableFile) {
         this.readableFile = new File(readableFile);
@@ -33,15 +35,17 @@ public class FileGenerator implements MessageGenerator{
     private void fillArray(){
         try (BufferedReader br = new BufferedReader(new FileReader(readableFile))) {
             String line = br.readLine();
+            LocalDateTime ldt = LocalDateTime.now();
             while (!line.equals("")) {
                 String[] splittedLine = line.split(",");
                 if (splittedLine[0].equals("")) {
                     splittedLine[0]="-9999";
                 }
                 try {
-                    cmL.add(new CameraMessage(Integer.parseInt(splittedLine[0]), splittedLine[1], LocalDateTime.now(), Integer.parseInt(splittedLine[2])));
+                    ldt = ldt.plusNanos(Long.parseLong(splittedLine[2])*100000);
+                    cmL.add(new CameraMessage(Integer.parseInt(splittedLine[0]), splittedLine[1], ldt  , Integer.parseInt(splittedLine[2])));
                 } catch (NumberFormatException e) {
-                    throw(e);
+                    LOGGER.error("Er is een string waardat er een nummer verwacht wordt");
                 } finally {
                     line = br.readLine();
                     continue;
@@ -52,8 +56,6 @@ public class FileGenerator implements MessageGenerator{
         catch (IOException | NumberFormatException e ){
             if (e.getClass() == IOException.class) {
                 LOGGER.error("Exception opgetreden tijdens het lezen van file.");
-            }
-            if (e.getClass() == NumberFormatException.class) {
             }
         }
     }
