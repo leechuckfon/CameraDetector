@@ -41,6 +41,7 @@ public class MessageReceiver {
     }
 
     public void receiveMessage(CameraMessage message) {
+        LOGGER.info("Message received: " +message.toString());
         ba.checkEmissieOvertreding(message);
     }
 

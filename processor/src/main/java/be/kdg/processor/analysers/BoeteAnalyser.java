@@ -45,12 +45,13 @@ public class BoeteAnalyser {
             if (perp.getEuroNumber() < emissie.getEuroNorm()){
                 if (!criminelen.containsKey(perp.getPlateId())) {
                     criminelen.put(perp.getPlateId(),m.getTimestamp());
-                    System.out.println("auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
+                    LOGGER.info("auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
                 } else {
                     LocalDateTime laatsteKeer = criminelen.get(perp.getPlateId());
                     if (laatsteKeer.until(m.getTimestamp(),ChronoUnit.SECONDS) > emissieTijd) {
                         criminelen.replace(perp.getPlateId(),m.getTimestamp());
-                        System.out.println("auto: " + perp.getPlateId() + " heeft nog een emissieovertreding");
+                        LOGGER.info("auto: " + perp.getPlateId() + " heeft nog een emissieovertreding.");
+
                     }
                 }
             }

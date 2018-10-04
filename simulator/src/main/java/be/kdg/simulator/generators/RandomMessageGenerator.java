@@ -19,7 +19,6 @@ public class RandomMessageGenerator implements MessageGenerator{
 
     @Override
     public CameraMessage generate() {
-        //TODO: Randomize nummerplaat
 
         int eersteNummer = r.nextInt(9)+1;
         StringBuilder letters = new StringBuilder();
