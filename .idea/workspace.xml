@@ -5,21 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffd05a0e-c96f-44c9-9908-a1ddb22de878" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraDeserializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/LicensePlateAnalyser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/processor/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/converter/XMLConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/XMLConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/CameraDeserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/CameraAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/CameraAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/CameraSegment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/DeserializeLocalDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/DeserializeLocalDateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/licenseplate/LicensePlateInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/Location.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/BoeteAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/CameraAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/CameraAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/LicensePlateAnalyser.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/LicensePlateAnalyser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processor/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/processor/src/test/java/be/kdg/processor/ProcessorApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/processor/src/test/java/be/kdg/processor/ProcessorApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/XMLConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/XMLConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/messengers/QueueMessenger.java" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/messengers/QueueMessenger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/model/CameraMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/model/CameraMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/model/SerializeLocalDateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/SerializeLocalDateTime.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv" beforeDir="false" afterPath="$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/simulator/.gradle/" />
@@ -53,15 +59,15 @@
     <session id="-560401673">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.25" value="2" />
           <entry key="project.open.time.26" value="4" />
           <entry key="project.open.time.27" value="1" />
-          <entry key="project.open.time.28" value="4" />
+          <entry key="project.open.time.28" value="6" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="2" />
-          <entry key="project.open.time.30" value="1" />
+          <entry key="project.open.time.30" value="3" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.35" value="1" />
@@ -72,23 +78,23 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="CameraMessage" value="2" />
           <entry key="Intellij banner" value="1" />
-          <entry key="JAVA/" value="1" />
+          <entry key="JAVA/" value="2" />
           <entry key="class" value="2" />
-          <entry key="csv" value="5" />
+          <entry key="csv" value="6" />
           <entry key="gitignore" value="4" />
           <entry key="gradle" value="15" />
           <entry key="gradlew" value="1" />
           <entry key="iml" value="1" />
-          <entry key="java" value="484" />
-          <entry key="processor" value="1" />
-          <entry key="properties" value="31" />
+          <entry key="java" value="515" />
+          <entry key="processor" value="4" />
+          <entry key="properties" value="32" />
           <entry key="txt" value="10" />
           <entry key="xml" value="3" />
         </counts>
@@ -98,22 +104,22 @@
           <entry key="CLASS" value="4" />
           <entry key="Groovy" value="15" />
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="484" />
-          <entry key="PLAIN_TEXT" value="21" />
-          <entry key="Properties" value="31" />
-          <entry key="UML" value="2" />
+          <entry key="JAVA" value="515" />
+          <entry key="PLAIN_TEXT" value="22" />
+          <entry key="Properties" value="32" />
+          <entry key="UML" value="6" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="CameraMessage" value="6" />
-          <entry key="csv" value="13" />
-          <entry key="dummy" value="66" />
+          <entry key="csv" value="22" />
+          <entry key="dummy" value="95" />
           <entry key="gradle" value="23" />
-          <entry key="java" value="17848" />
-          <entry key="properties" value="764" />
-          <entry key="txt" value="1428" />
+          <entry key="java" value="18999" />
+          <entry key="properties" value="784" />
+          <entry key="txt" value="1657" />
           <entry key="xml" value="2" />
         </counts>
       </usages-collector>
@@ -121,9 +127,9 @@
         <counts>
           <entry key="CLASS" value="6" />
           <entry key="Groovy" value="23" />
-          <entry key="JAVA" value="17848" />
-          <entry key="PLAIN_TEXT" value="1507" />
-          <entry key="Properties" value="764" />
+          <entry key="JAVA" value="18999" />
+          <entry key="PLAIN_TEXT" value="1774" />
+          <entry key="Properties" value="784" />
           <entry key="XML" value="2" />
         </counts>
       </usages-collector>
@@ -134,17 +140,225 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="85">
               <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.amqp/spring-rabbit/2.0.6.RELEASE/e65c9ce773e25cfd85b3dd5938300e7e0739f3db/spring-rabbit-2.0.6.RELEASE-sources.jar!/org/springframework/amqp/rabbit/listener/adapter/MessageListenerAdapter.java">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/LicensePlateAnalyser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="371" selection-start-line="371" selection-end-line="371" />
+            <state relative-caret-position="391">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/BoeteAnalyser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="536">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="uml://JAVA/be.kdg.processor">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>JAVA</ID>
+              <OriginalElement>be.kdg.processor</OriginalElement>
+              <nodes>
+                <node x="160.5009070294784" y="601.0">be.kdg.processor.model.CameraMessage</node>
+                <node x="595.5009070294784" y="212.0">be.kdg.processor.deserializers.CameraDeserializer</node>
+                <node x="674.5009070294784" y="933.0">be.kdg.processor.analysers.BoeteAnalyser</node>
+                <node x="656.0009070294784" y="323.0">be.kdg.processor.model.camera.Camera</node>
+                <node x="306.5" y="977.0">be.kdg.processor.deserializers.XMLConverter</node>
+                <node x="980.5009070294784" y="212.0">be.kdg.processor.deserializers.LicensePlateDeserializer</node>
+                <node x="0.0" y="1352.0">be.kdg.processor.ProcessorApplication</node>
+                <node x="10.5" y="999.5">be.kdg.processor.Receivers.Receiver</node>
+                <node x="799.0634070294784" y="22.0">be.kdg.processor.model.camera.Location</node>
+                <node x="540.9384070294784" y="0.0">be.kdg.processor.model.camera.CameraSegment</node>
+                <node x="212.50090702947847" y="1167.0">be.kdg.processor.Receivers.MessageReceiver</node>
+                <node x="83.00090702947841" y="411.5">be.kdg.processor.deserializers.DeserializeLocalDateTime</node>
+                <node x="998.0009070294784" y="700.0">be.kdg.processor.analysers.LicensePlateAnalyser</node>
+                <node x="1071.0009070294784" y="356.0">be.kdg.processor.model.licenseplate.LicensePlateInfo</node>
+                <node x="582.7685941043085" y="700.0">be.kdg.processor.analysers.CameraAnalyser</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="be.kdg.processor.model.licenseplate.LicensePlateInfo" target="be.kdg.processor.deserializers.LicensePlateDeserializer">
+                  <point x="-72.33333333333326" y="-81.0" />
+                  <point x="1107.1675736961452" y="303.0" />
+                  <point x="1046.834240362812" y="303.0" />
+                  <point x="-132.66666666666663" y="25.5" />
+                </edge>
+                <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.Location">
+                  <point x="66.28571428571428" y="-114.0" />
+                  <point x="838.2866213151927" y="293.0" />
+                  <point x="959.0009070294784" y="293.0" />
+                  <point x="959.0009070294784" y="192.0" />
+                  <point x="916.5634070294784" y="192.0" />
+                  <point x="23.5" y="59.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.CameraAnalyser" target="be.kdg.processor.model.camera.Camera">
+                  <point x="0.0" y="-37.0" />
+                  <point x="706.2685941043085" y="576.0" />
+                  <point x="714.0009070294784" y="576.0" />
+                  <point x="-58.0" y="114.0" />
+                </edge>
+                <edge source="be.kdg.processor.model.CameraMessage" target="be.kdg.processor.deserializers.DeserializeLocalDateTime">
+                  <point x="0.0" y="-136.0" />
+                  <point x="0.0" y="25.5" />
+                </edge>
+                <edge source="be.kdg.processor.Receivers.Receiver" target="be.kdg.processor.model.CameraMessage">
+                  <point x="0.0" y="-25.5" />
+                  <point x="148.5" y="913.0" />
+                  <point x="249.0009070294784" y="913.0" />
+                  <point x="-29.5" y="136.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.CameraMessage">
+                  <point x="-131.60000000000002" y="-92.0" />
+                  <point x="707.4009070294785" y="903.0" />
+                  <point x="367.0009070294784" y="903.0" />
+                  <point x="88.5" y="136.0" />
+                </edge>
+                <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.analysers.BoeteAnalyser">
+                  <point x="180.33333333333326" y="-70.0" />
+                  <point x="663.3342403628117" y="1142.0" />
+                  <point x="839.0009070294784" y="1142.0" />
+                  <point x="0.0" y="92.0" />
+                </edge>
+                <edge source="be.kdg.processor.deserializers.XMLConverter" target="be.kdg.processor.model.CameraMessage">
+                  <point x="0.0" y="-48.0" />
+                  <point x="468.0" y="913.0" />
+                  <point x="308.0009070294784" y="913.0" />
+                  <point x="29.5" y="136.0" />
+                </edge>
+                <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Camera">
+                  <point x="117.66666666666669" y="25.5" />
+                  <point x="889.6675736961452" y="283.0" />
+                  <point x="805.1437641723356" y="283.0" />
+                  <point x="33.142857142857174" y="-114.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.LicensePlateAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+                  <point x="0.0" y="-37.0" />
+                  <point x="1115.5009070294784" y="576.0" />
+                  <point x="1125.2509070294784" y="576.0" />
+                  <point x="-54.25" y="81.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.LicensePlateAnalyser">
+                  <point x="65.79999999999995" y="-92.0" />
+                  <point x="904.8009070294784" y="903.0" />
+                  <point x="1115.5009070294784" y="903.0" />
+                  <point x="0.0" y="37.0" />
+                </edge>
+                <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Location">
+                  <point x="44.125" y="-25.5" />
+                  <point x="816.1259070294784" y="192.0" />
+                  <point x="822.5634070294784" y="192.0" />
+                  <point x="-70.5" y="59.0" />
+                </edge>
+                <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.CameraSegment">
+                  <point x="-44.125" y="-25.5" />
+                  <point x="727.8759070294784" y="192.0" />
+                  <point x="733.4384070294784" y="192.0" />
+                  <point x="82.5" y="81.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.CameraAnalyser">
+                  <point x="-65.80000000000007" y="-92.0" />
+                  <point x="773.2009070294785" y="893.0" />
+                  <point x="706.2685941043085" y="893.0" />
+                  <point x="0.0" y="37.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+                  <point x="131.60000000000002" y="-92.0" />
+                  <point x="970.6009070294785" y="913.0" />
+                  <point x="1243.5009070294784" y="913.0" />
+                  <point x="1243.5009070294784" y="576.0" />
+                  <point x="1233.7509070294784" y="576.0" />
+                  <point x="54.24999999999994" y="81.0" />
+                </edge>
+                <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.deserializers.XMLConverter">
+                  <point x="0.0" y="-70.0" />
+                  <point x="483.00090702947847" y="1142.0" />
+                  <point x="468.0" y="1142.0" />
+                  <point x="0.0" y="48.0" />
+                </edge>
+                <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.deserializers.CameraDeserializer">
+                  <point x="-33.14285714285714" y="-114.0" />
+                  <point x="738.8580498866213" y="283.0" />
+                  <point x="654.3342403628118" y="283.0" />
+                  <point x="-117.66666666666667" y="25.5" />
+                </edge>
+                <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.CameraSegment">
+                  <point x="-66.28571428571428" y="-114.0" />
+                  <point x="705.7151927437642" y="293.0" />
+                  <point x="585.0009070294784" y="293.0" />
+                  <point x="585.0009070294784" y="192.0" />
+                  <point x="623.4384070294784" y="192.0" />
+                  <point x="-27.5" y="81.0" />
+                </edge>
+                <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.camera.Camera">
+                  <point x="0.0" y="-92.0" />
+                  <point x="839.0009070294784" y="913.0" />
+                  <point x="840.2685941043084" y="913.0" />
+                  <point x="840.2685941043084" y="576.0" />
+                  <point x="830.0009070294784" y="576.0" />
+                  <point x="58.00000000000001" y="114.0" />
+                </edge>
+                <edge source="be.kdg.processor.deserializers.LicensePlateDeserializer" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+                  <point x="132.66666666666646" y="25.5" />
+                  <point x="1312.167573696145" y="303.0" />
+                  <point x="1251.834240362812" y="303.0" />
+                  <point x="72.33333333333343" y="-81.0" />
+                </edge>
+                <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.model.CameraMessage">
+                  <point x="-180.33333333333337" y="-70.0" />
+                  <point x="302.6675736961451" y="1142.0" />
+                  <point x="0.0" y="1142.0" />
+                  <point x="0.0" y="903.0" />
+                  <point x="190.0009070294784" y="903.0" />
+                  <point x="-88.5" y="136.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="8.599999999999987" x="86.90697674418618" y="1376.3064295485628" />
+              <SelectedNodes />
+              <Categories>
+                <Category>Fields</Category>
+                <Category>Methods</Category>
+              </Categories>
+              <SCOPE>All</SCOPE>
+              <VISIBILITY>private</VISIBILITY>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/CameraSegment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/Camera.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,34 +366,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
-              <folding>
-                <element signature="e#1676#1677#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="374">
+              <caret line="32" column="43" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/CameraDeserializer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-              <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+            <state relative-caret-position="170">
+              <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,49 +385,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/DeserializeLocalDateTime.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/licenseplate/LicensePlateInfo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateInfo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateSerializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="429">
-              <caret line="31" column="71" lean-forward="true" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/DeserializeLocalDateTime.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -669,7 +836,7 @@
       <map>
         <entry key="$PROJECT_DIR$/processor" value="4613420781655" />
         <entry key="$PROJECT_DIR$/processor/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/processor/build.gradle" value="705952726" />
+        <entry key="$PROJECT_DIR$/processor/build.gradle" value="7156442" />
         <entry key="$PROJECT_DIR$/processor/settings.gradle" value="1559373882" />
         <entry key="$PROJECT_DIR$/simulator" value="4613298684111" />
         <entry key="$PROJECT_DIR$/simulator/.gradle" value="0" />
@@ -921,14 +1088,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/generators/GeneratorConfig.java" />
-        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/Receiver.java" />
-        <option value="$PROJECT_DIR$/processor/gitignore" />
-        <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/processor/src/main/resources/Intellij banner" />
         <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/receivers/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/simulator/spring.configuration.xml" />
-        <option value="$PROJECT_DIR$/processor/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/Receivers/Receiver.java" />
         <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/Receivers/MessageReceiver.java" />
@@ -957,7 +1118,6 @@
         <option value="$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/model/DeserializeLocalDateTime.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/converter/XMLConverter.java" />
         <option value="$PROJECT_DIR$/processor/build.gradle" />
-        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraMessage.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java" />
@@ -968,10 +1128,17 @@
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/Analyser.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/CameraAnalyser.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/LicensePlateAnalyser.java" />
-        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraDeserializer.java" />
-        <option value="$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java" />
         <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateSerializer.java" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/XMLConverter.java" />
+        <option value="$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv" />
+        <option value="$PROJECT_DIR$/processor/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/CameraDeserializer.java" />
+        <option value="$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/BoeteAnalyser.java" />
       </list>
     </option>
   </component>
@@ -982,7 +1149,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
+    <option name="x" value="953" />
     <option name="width" value="974" />
     <option name="height" value="1087" />
   </component>
@@ -992,7 +1159,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1038,34 +1204,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="processor" type="462c0819:PsiDirectoryNode" />
-              <item name="converter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processor" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processor" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-              <item name="Receivers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
-              <item name="processor" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="processor" type="462c0819:PsiDirectoryNode" />
-              <item name="serviceUser" type="462c0819:PsiDirectoryNode" />
+              <item name="analysers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
@@ -1109,6 +1248,66 @@
               <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="generators" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="messengers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="simulator" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="Receivers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cameraDetector" type="b2602c69:ProjectViewProjectNode" />
@@ -1129,8 +1328,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1140,11 +1340,11 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538614489560" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538656122152" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="jdk.selected.JAVA_MODULE" value="10" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1154,6 +1354,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="be.kdg.processor.model" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="be.kdg.processor.serviceUser" />
     </key>
@@ -1162,12 +1365,6 @@
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\IdeaProjects\cameraDetector\processor\lib" />
-      <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\resources\readFile" />
-      <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\resources" />
-      <recent name="D:\IdeaProjects\cameraDetector\processor\src\main\resources\banner" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="be.kdg.simulator.model" />
@@ -1179,8 +1376,11 @@
       <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\resources\readFile" />
       <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\java\be\kdg\simulator" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="be.kdg.processor.model" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\IdeaProjects\cameraDetector\processor\lib" />
+      <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\resources\readFile" />
+      <recent name="D:\IdeaProjects\cameraDetector\simulator\src\main\resources" />
+      <recent name="D:\IdeaProjects\cameraDetector\processor\src\main\resources\banner" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -1233,7 +1433,7 @@
       <module name="simulator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="be.kdg.simulator.config.*" />
+          <option name="PATTERN" value="be.kdg.simulator.serializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1247,7 +1447,7 @@
       <module name="simulator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="be.kdg.simulator.config.*" />
+          <option name="PATTERN" value="be.kdg.simulator.serializers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -1325,7 +1525,11 @@
       <workItem from="1538495294903" duration="2455000" />
       <workItem from="1538566556632" duration="4021000" />
       <workItem from="1538579303394" duration="2933000" />
-      <workItem from="1538605543473" duration="8801000" />
+      <workItem from="1538605543473" duration="9114000" />
+      <workItem from="1538641074932" duration="1842000" />
+      <workItem from="1538643938399" duration="2232000" />
+      <workItem from="1538646447956" duration="758000" />
+      <workItem from="1538655692946" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed #1">
       <created>1537520714225</created>
@@ -1404,7 +1608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1538581889686</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Opgevraagde Camera's en Licenseplates van de proxies worden gedeserialiseerd en emissiecontrole uitgewerkt. Nieuwe naam voor Analyser moet nog gevonden worden en raam maken voor andere controles.">
+      <created>1538614707327</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1538614707327</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1440,7 +1651,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90422000" />
+    <option name="totallyTimeSpent" value="95937000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1453,8 +1664,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19402985" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1474,7 +1686,7 @@
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32952183" />
       <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="12" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="13" visible="true" weight="0.35446987" />
+      <window_info anchor="bottom" id="Run Dashboard" order="13" visible="true" weight="0.35758835" />
       <window_info active="true" anchor="bottom" id="Inspection Results" order="14" visible="true" weight="0.32952183" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1506,7 +1718,8 @@
     <MESSAGE value="Code Cleanup" />
     <MESSAGE value="Logging toegepast, Scheduler herschreven, Generator heeft geen kennis van Messenger noch anderom" />
     <MESSAGE value="Messages zijn nu in XML formaat mbv XMLConverter, DeserializeLocalDateTime en SerializeLocalDateTime en file kan gelezen geworden. Test toegevoegd voor CameraService testen." />
-    <option name="LAST_COMMIT_MESSAGE" value="Messages zijn nu in XML formaat mbv XMLConverter, DeserializeLocalDateTime en SerializeLocalDateTime en file kan gelezen geworden. Test toegevoegd voor CameraService testen." />
+    <MESSAGE value="Opgevraagde Camera's en Licenseplates van de proxies worden gedeserialiseerd en emissiecontrole uitgewerkt. Nieuwe naam voor Analyser moet nog gevonden worden en raam maken voor andere controles." />
+    <option name="LAST_COMMIT_MESSAGE" value="Opgevraagde Camera's en Licenseplates van de proxies worden gedeserialiseerd en emissiecontrole uitgewerkt. Nieuwe naam voor Analyser moet nog gevonden worden en raam maken voor andere controles." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1524,16 +1737,34 @@
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/XMLConverter.java</url>
+          <url>file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/XMLConverter.java</url>
           <line>19</line>
           <properties />
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/XMLConverter.java</url>
+          <url>file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/XMLConverter.java</url>
           <line>28</line>
           <properties />
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java</url>
+          <line>16</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java</url>
+          <line>15</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java</url>
+          <line>14</line>
+          <properties />
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -1545,154 +1776,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/generators/MessageGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/generators/FileGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/QueueConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/XMLConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="23" lean-forward="true" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/MessageScheduler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="44" column="13" lean-forward="true" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/generators/RandomMessageGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/be.kdg.processor">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement>be.kdg.processor</OriginalElement>
-          <nodes>
-            <node x="0.0" y="0.0">be.kdg.processor.ProcessorApplicationTests</node>
-            <node x="180.0" y="222.0">be.kdg.processor.serviceUser.CameraAnalyser</node>
-            <node x="0.0" y="222.0">be.kdg.processor.model.CameraMessage</node>
-            <node x="139.0" y="370.0">be.kdg.processor.Receivers.Receiver</node>
-            <node x="227.0" y="74.0">be.kdg.processor.ProcessorApplication</node>
-            <node x="0.0" y="148.0">be.kdg.processor.Receivers.MessageReceiver</node>
-            <node x="276.0" y="370.0">be.kdg.processor.model.Camera</node>
-            <node x="169.0" y="296.0">be.kdg.processor.serviceUser.BoeteAnalyser</node>
-            <node x="0.0" y="370.0">be.kdg.processor.model.Location</node>
-            <node x="0.0" y="74.0">be.kdg.processor.model.DeserializeLocalDateTime</node>
-            <node x="0.0" y="296.0">be.kdg.processor.converter.XMLConverter</node>
-            <node x="183.0" y="148.0">be.kdg.processor.model.CameraSegment</node>
-          </nodes>
-          <notes />
-          <edges />
-          <settings layout="Hierarchic Group" zoom="1.4000000000000001" x="-287.4999999999998" y="-15.571428571428584" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://JAVA/">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>JAVA</ID>
-          <OriginalElement />
-          <nodes>
-            <node x="0.0" y="464.0">be.kdg.processor.serviceUser.CameraAnalyser</node>
-            <node x="64.75" y="390.0">be.kdg.processor.model.Camera</node>
-            <node x="0.0" y="311.0">be.kdg.processor.model.Location</node>
-            <node x="179.0" y="464.0">be.kdg.processor.serviceUser.BoeteAnalyser</node>
-            <node x="116.70833333333333" y="79.0">be.kdg.processor.model.CameraMessage</node>
-            <node x="93.20833333333333" y="0.0">be.kdg.processor.model.DeserializeLocalDateTime</node>
-            <node x="114.0" y="311.0">be.kdg.processor.model.CameraSegment</node>
-            <node x="144.0" y="158.0">be.kdg.processor.Receivers.Receiver</node>
-            <node x="295.0" y="311.0">be.kdg.processor.ProcessorApplication</node>
-            <node x="97.16666666666667" y="237.0">be.kdg.processor.Receivers.MessageReceiver</node>
-            <node x="0.0" y="158.0">be.kdg.processor.converter.XMLConverter</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="be.kdg.processor.converter.XMLConverter" target="be.kdg.processor.model.CameraMessage">
-              <point x="0.0" y="-14.5" />
-              <point x="62.0" y="133.0" />
-              <point x="139.20833333333331" y="133.0" />
-              <point x="-45.0" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.converter.XMLConverter">
-              <point x="-34.5" y="-14.5" />
-              <point x="131.66666666666669" y="212.0" />
-              <point x="62.0" y="212.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.model.CameraMessage" target="be.kdg.processor.model.DeserializeLocalDateTime">
-              <point x="0.0" y="-14.5" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.Receivers.Receiver" target="be.kdg.processor.model.CameraMessage">
-              <point x="0.0" y="-14.5" />
-              <point x="190.0" y="133.0" />
-              <point x="184.20833333333331" y="133.0" />
-              <point x="0.0" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.model.Camera" target="be.kdg.processor.model.Location">
-              <point x="-11.125" y="-14.5" />
-              <point x="98.125" y="360.0" />
-              <point x="70.5" y="360.0" />
-              <point x="23.5" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.model.Camera" target="be.kdg.processor.model.CameraSegment">
-              <point x="33.375" y="-14.5" />
-              <point x="142.625" y="370.0" />
-              <point x="216.0" y="370.0" />
-              <point x="34.0" y="14.5" />
-            </edge>
-            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.model.CameraMessage">
-              <point x="34.5" y="-14.5" />
-              <point x="200.66666666666669" y="212.0" />
-              <point x="246.5" y="212.0" />
-              <point x="246.5" y="133.0" />
-              <point x="229.20833333333331" y="133.0" />
-              <point x="45.0" y="14.5" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="1.0" x="-255.5" y="58.0" />
-          <SelectedNodes />
-          <Categories />
-          <SCOPE>All</SCOPE>
-          <VISIBILITY>private</VISIBILITY>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/processor/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
@@ -1718,10 +1801,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="295" selection-start-line="295" selection-end-line="295" />
-          <folding>
-            <element signature="e#11230#11231#0" expanded="true" />
-            <element signature="e#11287#11288#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1743,10 +1822,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="46" selection-start-line="46" selection-end-line="46" />
-          <folding>
-            <element signature="e#1464#1658#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1838,42 +1913,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="4020" selection-start-line="4020" selection-end-line="4020" />
-          <folding>
-            <element signature="e#20338#20339#0" expanded="true" />
-            <element signature="e#20376#20377#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="50" lean-forward="true" selection-start-line="5" selection-end-line="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
-            <element signature="e#1022#1023#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/Analyser.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/Analyser.java" />
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/java.base/jdk/internal/reflect/DelegatingMethodAccessorImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/SimulatorApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1891,57 +1938,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/CameraAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#533#534#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraDeserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/converter/XMLConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/LicensePlateAnalyser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/5.0.9.RELEASE/ab4feec73b188109eb1a3aa8aed83c1f97ed1168/spring-core-5.0.9.RELEASE-sources.jar!/org/springframework/util/MethodInvoker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1951,85 +1947,583 @@
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.amqp/spring-rabbit/2.0.6.RELEASE/e65c9ce773e25cfd85b3dd5938300e7e0739f3db/spring-rabbit-2.0.6.RELEASE-sources.jar!/org/springframework/amqp/rabbit/listener/adapter/MessageListenerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
+        <state relative-caret-position="5525">
           <caret line="371" selection-start-line="371" selection-end-line="371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/XMLConverter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/serializers/SerializeLocalDateTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/generators/FileGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/config/MessageScheduler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="74" selection-start-line="25" selection-start-column="74" selection-end-line="25" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/simulator/src/main/resources/readFile/example.csv">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/model/CameraMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/messengers/QueueMessenger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simulator/src/main/java/be/kdg/simulator/SimulatorApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateInfo.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/ProcessorApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        <state relative-caret-position="85">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/LicensePlateSerializer.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/XMLConverter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="429">
-          <caret line="31" column="71" lean-forward="true" selection-start-line="31" selection-start-column="71" selection-end-line="31" selection-end-column="71" />
+        <state relative-caret-position="409">
+          <caret line="30" column="84" selection-start-line="30" selection-start-column="84" selection-end-line="30" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/DeserializeLocalDateTime.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/LicensePlateDeserializer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        <state relative-caret-position="272">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraSegment.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/CameraAnalyser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement />
+          <nodes>
+            <node x="1888.2757227891157" y="843.0">be.kdg.processor.model.CameraMessage</node>
+            <node x="375.22512755102036" y="212.0">be.kdg.sa.services.CameraServiceProxy.Camera</node>
+            <node x="0.0" y="620.5">be.kdg.sa.services.CameraNotFoundException</node>
+            <node x="214.0" y="499.0">be.kdg.sa.services.CameraServiceProxy</node>
+            <node x="701.5" y="289.0">be.kdg.processor.deserializers.CameraDeserializer</node>
+            <node x="904.0" y="1175.0">be.kdg.processor.analysers.BoeteAnalyser</node>
+            <node x="768.7757227891157" y="521.0">be.kdg.processor.model.camera.Camera</node>
+            <node x="2238.5257227891157" y="1219.0">be.kdg.processor.deserializers.XMLConverter</node>
+            <node x="1020.7757227891157" y="620.5">be.kdg.sa.services.LicensePlateNotFoundException</node>
+            <node x="1483.2757227891157" y="289.0">be.kdg.processor.deserializers.LicensePlateDeserializer</node>
+            <node x="1942.5257227891157" y="1241.5">be.kdg.processor.Receivers.Receiver</node>
+            <node x="1004.7708333333333" y="22.0">be.kdg.processor.model.camera.Location</node>
+            <node x="1258.7757227891157" y="477.0">be.kdg.sa.services.LicensePlateServiceProxy</node>
+            <node x="1524.5" y="1409.0">be.kdg.processor.Receivers.MessageReceiver</node>
+            <node x="1810.7757227891157" y="609.5">be.kdg.processor.deserializers.DeserializeLocalDateTime</node>
+            <node x="567.8650085034014" y="0.0">be.kdg.processor.model.camera.CameraSegment</node>
+            <node x="1303.8601190476188" y="942.0">be.kdg.processor.analysers.LicensePlateAnalyser</node>
+            <node x="1573.7757227891157" y="554.0">be.kdg.processor.model.licenseplate.LicensePlateInfo</node>
+            <node x="341.22512755102036" y="942.0">be.kdg.processor.analysers.CameraAnalyser</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="be.kdg.sa.services.CameraServiceProxy.Camera" target="be.kdg.sa.services.CameraServiceProxy">
+              <point x="44.75" y="102.5" />
+              <point x="509.47512755102036" y="457.0" />
+              <point x="610.0" y="457.0" />
+              <point x="132.0" y="-136.0" />
+            </edge>
+            <edge source="be.kdg.processor.model.licenseplate.LicensePlateInfo" target="be.kdg.processor.deserializers.LicensePlateDeserializer">
+              <point x="-72.33333333333326" y="-81.0" />
+              <point x="1609.9423894557824" y="457.0" />
+              <point x="1549.609056122449" y="457.0" />
+              <point x="-132.66666666666674" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.CameraAnalyser" target="be.kdg.processor.model.camera.Camera">
+              <point x="92.625" y="-37.0" />
+              <point x="557.3501275510204" y="823.0" />
+              <point x="826.7757227891157" y="823.0" />
+              <point x="-58.0" y="114.0" />
+            </edge>
+            <edge source="be.kdg.processor.model.CameraMessage" target="be.kdg.processor.deserializers.DeserializeLocalDateTime">
+              <point x="0.0" y="-136.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.Receiver" target="be.kdg.processor.model.CameraMessage">
+              <point x="0.0" y="-25.5" />
+              <point x="2080.5257227891157" y="1155.0" />
+              <point x="2035.7757227891157" y="1155.0" />
+              <point x="29.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.CameraMessage">
+              <point x="141.0" y="-92.0" />
+              <point x="1209.5" y="1155.0" />
+              <point x="1917.7757227891157" y="1155.0" />
+              <point x="-88.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.analysers.BoeteAnalyser">
+              <point x="-180.33333333333348" y="-70.0" />
+              <point x="1614.6666666666665" y="1384.0" />
+              <point x="1068.5" y="1384.0" />
+              <point x="0.0" y="92.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Camera">
+              <point x="0.0" y="25.5" />
+              <point x="878.0" y="457.0" />
+              <point x="884.7757227891157" y="457.0" />
+              <point x="0.0" y="-114.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.LicensePlateAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="88.125" y="-37.0" />
+              <point x="1509.4851190476188" y="823.0" />
+              <point x="1628.0257227891157" y="823.0" />
+              <point x="-54.25" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.LicensePlateAnalyser">
+              <point x="47.0" y="-92.0" />
+              <point x="1115.5" y="1135.0" />
+              <point x="1421.3601190476188" y="1135.0" />
+              <point x="0.0" y="37.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.sa.services.CameraNotFoundException">
+              <point x="-141.0" y="-92.0" />
+              <point x="927.5" y="1155.0" />
+              <point x="48.5" y="1155.0" />
+              <point x="-48.5" y="14.5" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Location">
+              <point x="44.125" y="-25.5" />
+              <point x="922.125" y="182.0" />
+              <point x="1028.2708333333333" y="182.0" />
+              <point x="-70.5" y="59.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.CameraAnalyser" target="be.kdg.sa.services.CameraServiceProxy">
+              <point x="-30.875" y="-37.0" />
+              <point x="433.85012755102036" y="813.0" />
+              <point x="346.0" y="813.0" />
+              <point x="-132.0" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.CameraAnalyser">
+              <point x="-94.0" y="-92.0" />
+              <point x="974.5" y="1145.0" />
+              <point x="464.72512755102036" y="1145.0" />
+              <point x="0.0" y="37.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.CameraAnalyser" target="be.kdg.sa.services.CameraNotFoundException">
+              <point x="-92.625" y="-37.0" />
+              <point x="372.10012755102036" y="823.0" />
+              <point x="145.5" y="823.0" />
+              <point x="48.5" y="14.5" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="94.0" y="-92.0" />
+              <point x="1162.5" y="1145.0" />
+              <point x="1736.5257227891157" y="1145.0" />
+              <point x="54.25" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.LicensePlateAnalyser" target="be.kdg.sa.services.LicensePlateServiceProxy">
+              <point x="-29.375" y="-37.0" />
+              <point x="1391.9851190476188" y="813.0" />
+              <point x="1332.5257227891157" y="813.0" />
+              <point x="-73.75" y="158.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.deserializers.XMLConverter">
+              <point x="180.33333333333348" y="-70.0" />
+              <point x="1975.3333333333335" y="1384.0" />
+              <point x="2400.0257227891157" y="1384.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.sa.services.LicensePlateNotFoundException">
+              <point x="0.0" y="-92.0" />
+              <point x="1068.5" y="1155.0" />
+              <point x="1075.2757227891157" y="1155.0" />
+              <point x="-54.5" y="14.5" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.LicensePlateAnalyser" target="be.kdg.sa.services.LicensePlateNotFoundException">
+              <point x="-88.125" y="-37.0" />
+              <point x="1333.2351190476188" y="823.0" />
+              <point x="1184.2757227891157" y="823.0" />
+              <point x="54.5" y="14.5" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.deserializers.CameraDeserializer">
+              <point x="-33.14285714285711" y="-114.0" />
+              <point x="851.6328656462586" y="437.0" />
+              <point x="760.3333333333333" y="437.0" />
+              <point x="-117.66666666666663" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.CameraSegment">
+              <point x="-99.42857142857144" y="-114.0" />
+              <point x="785.3471513605442" y="457.0" />
+              <point x="623.1150085034014" y="457.0" />
+              <point x="623.1150085034014" y="192.0" />
+              <point x="595.3650085034014" y="192.0" />
+              <point x="-82.5" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.LicensePlateDeserializer" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="0.0" y="25.5" />
+              <point x="0.0" y="-81.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.model.CameraMessage">
+              <point x="0.0" y="-70.0" />
+              <point x="1795.0" y="1384.0" />
+              <point x="1932.0257227891157" y="1384.0" />
+              <point x="1932.0257227891157" y="1155.0" />
+              <point x="1976.7757227891157" y="1155.0" />
+              <point x="-29.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.Location">
+              <point x="66.28571428571433" y="-114.0" />
+              <point x="951.06143707483" y="447.0" />
+              <point x="1150.5208333333333" y="447.0" />
+              <point x="1150.5208333333333" y="192.0" />
+              <point x="1122.2708333333333" y="192.0" />
+              <point x="23.5" y="59.0" />
+            </edge>
+            <edge source="be.kdg.sa.services.CameraServiceProxy" target="be.kdg.sa.services.CameraServiceProxy.Camera">
+              <point x="-132.0" y="-136.0" />
+              <point x="346.0" y="457.0" />
+              <point x="419.97512755102036" y="457.0" />
+              <point x="-44.75" y="102.5" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.XMLConverter" target="be.kdg.processor.model.CameraMessage">
+              <point x="0.0" y="-48.0" />
+              <point x="2400.0257227891157" y="1155.0" />
+              <point x="2094.7757227891157" y="1155.0" />
+              <point x="88.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.CameraSegment">
+              <point x="-44.125" y="-25.5" />
+              <point x="833.875" y="192.0" />
+              <point x="760.3650085034014" y="192.0" />
+              <point x="82.5" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.camera.Camera">
+              <point x="-47.0" y="-92.0" />
+              <point x="1021.5" y="1135.0" />
+              <point x="942.7757227891157" y="1135.0" />
+              <point x="58.0" y="114.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.6632887189292543" x="1120.0" y="770.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+            <Category>Inner Classes</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/CameraMessage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="85">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/Location.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/CameraSegment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/camera/Camera.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/Receivers/MessageReceiver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="374">
+          <caret line="32" column="43" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/CameraDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="19" column="39" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
           <folding>
-            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/serviceUser/BoeteAnalyser.java">
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/deserializers/DeserializeLocalDateTime.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
+        <state relative-caret-position="68">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/model/licenseplate/LicensePlateInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/LicensePlateAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/processor/src/main/java/be/kdg/processor/analysers/BoeteAnalyser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/be.kdg.processor">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>be.kdg.processor</OriginalElement>
+          <nodes>
+            <node x="160.5009070294784" y="601.0">be.kdg.processor.model.CameraMessage</node>
+            <node x="595.5009070294784" y="212.0">be.kdg.processor.deserializers.CameraDeserializer</node>
+            <node x="674.5009070294784" y="933.0">be.kdg.processor.analysers.BoeteAnalyser</node>
+            <node x="656.0009070294784" y="323.0">be.kdg.processor.model.camera.Camera</node>
+            <node x="306.5" y="977.0">be.kdg.processor.deserializers.XMLConverter</node>
+            <node x="980.5009070294784" y="212.0">be.kdg.processor.deserializers.LicensePlateDeserializer</node>
+            <node x="0.0" y="1352.0">be.kdg.processor.ProcessorApplication</node>
+            <node x="10.5" y="999.5">be.kdg.processor.Receivers.Receiver</node>
+            <node x="799.0634070294784" y="22.0">be.kdg.processor.model.camera.Location</node>
+            <node x="540.9384070294784" y="0.0">be.kdg.processor.model.camera.CameraSegment</node>
+            <node x="212.50090702947847" y="1167.0">be.kdg.processor.Receivers.MessageReceiver</node>
+            <node x="83.00090702947841" y="411.5">be.kdg.processor.deserializers.DeserializeLocalDateTime</node>
+            <node x="998.0009070294784" y="700.0">be.kdg.processor.analysers.LicensePlateAnalyser</node>
+            <node x="1071.0009070294784" y="356.0">be.kdg.processor.model.licenseplate.LicensePlateInfo</node>
+            <node x="582.7685941043085" y="700.0">be.kdg.processor.analysers.CameraAnalyser</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="be.kdg.processor.model.licenseplate.LicensePlateInfo" target="be.kdg.processor.deserializers.LicensePlateDeserializer">
+              <point x="-72.33333333333326" y="-81.0" />
+              <point x="1107.1675736961452" y="303.0" />
+              <point x="1046.834240362812" y="303.0" />
+              <point x="-132.66666666666663" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.Location">
+              <point x="66.28571428571428" y="-114.0" />
+              <point x="838.2866213151927" y="293.0" />
+              <point x="959.0009070294784" y="293.0" />
+              <point x="959.0009070294784" y="192.0" />
+              <point x="916.5634070294784" y="192.0" />
+              <point x="23.5" y="59.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.CameraAnalyser" target="be.kdg.processor.model.camera.Camera">
+              <point x="0.0" y="-37.0" />
+              <point x="706.2685941043085" y="576.0" />
+              <point x="714.0009070294784" y="576.0" />
+              <point x="-58.0" y="114.0" />
+            </edge>
+            <edge source="be.kdg.processor.model.CameraMessage" target="be.kdg.processor.deserializers.DeserializeLocalDateTime">
+              <point x="0.0" y="-136.0" />
+              <point x="0.0" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.Receiver" target="be.kdg.processor.model.CameraMessage">
+              <point x="0.0" y="-25.5" />
+              <point x="148.5" y="913.0" />
+              <point x="249.0009070294784" y="913.0" />
+              <point x="-29.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.CameraMessage">
+              <point x="-131.60000000000002" y="-92.0" />
+              <point x="707.4009070294785" y="903.0" />
+              <point x="367.0009070294784" y="903.0" />
+              <point x="88.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.analysers.BoeteAnalyser">
+              <point x="180.33333333333326" y="-70.0" />
+              <point x="663.3342403628117" y="1142.0" />
+              <point x="839.0009070294784" y="1142.0" />
+              <point x="0.0" y="92.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.XMLConverter" target="be.kdg.processor.model.CameraMessage">
+              <point x="0.0" y="-48.0" />
+              <point x="468.0" y="913.0" />
+              <point x="308.0009070294784" y="913.0" />
+              <point x="29.5" y="136.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Camera">
+              <point x="117.66666666666669" y="25.5" />
+              <point x="889.6675736961452" y="283.0" />
+              <point x="805.1437641723356" y="283.0" />
+              <point x="33.142857142857174" y="-114.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.LicensePlateAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="0.0" y="-37.0" />
+              <point x="1115.5009070294784" y="576.0" />
+              <point x="1125.2509070294784" y="576.0" />
+              <point x="-54.25" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.LicensePlateAnalyser">
+              <point x="65.79999999999995" y="-92.0" />
+              <point x="904.8009070294784" y="903.0" />
+              <point x="1115.5009070294784" y="903.0" />
+              <point x="0.0" y="37.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.Location">
+              <point x="44.125" y="-25.5" />
+              <point x="816.1259070294784" y="192.0" />
+              <point x="822.5634070294784" y="192.0" />
+              <point x="-70.5" y="59.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.CameraDeserializer" target="be.kdg.processor.model.camera.CameraSegment">
+              <point x="-44.125" y="-25.5" />
+              <point x="727.8759070294784" y="192.0" />
+              <point x="733.4384070294784" y="192.0" />
+              <point x="82.5" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.analysers.CameraAnalyser">
+              <point x="-65.80000000000007" y="-92.0" />
+              <point x="773.2009070294785" y="893.0" />
+              <point x="706.2685941043085" y="893.0" />
+              <point x="0.0" y="37.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="131.60000000000002" y="-92.0" />
+              <point x="970.6009070294785" y="913.0" />
+              <point x="1243.5009070294784" y="913.0" />
+              <point x="1243.5009070294784" y="576.0" />
+              <point x="1233.7509070294784" y="576.0" />
+              <point x="54.24999999999994" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.deserializers.XMLConverter">
+              <point x="0.0" y="-70.0" />
+              <point x="483.00090702947847" y="1142.0" />
+              <point x="468.0" y="1142.0" />
+              <point x="0.0" y="48.0" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.deserializers.CameraDeserializer">
+              <point x="-33.14285714285714" y="-114.0" />
+              <point x="738.8580498866213" y="283.0" />
+              <point x="654.3342403628118" y="283.0" />
+              <point x="-117.66666666666667" y="25.5" />
+            </edge>
+            <edge source="be.kdg.processor.model.camera.Camera" target="be.kdg.processor.model.camera.CameraSegment">
+              <point x="-66.28571428571428" y="-114.0" />
+              <point x="705.7151927437642" y="293.0" />
+              <point x="585.0009070294784" y="293.0" />
+              <point x="585.0009070294784" y="192.0" />
+              <point x="623.4384070294784" y="192.0" />
+              <point x="-27.5" y="81.0" />
+            </edge>
+            <edge source="be.kdg.processor.analysers.BoeteAnalyser" target="be.kdg.processor.model.camera.Camera">
+              <point x="0.0" y="-92.0" />
+              <point x="839.0009070294784" y="913.0" />
+              <point x="840.2685941043084" y="913.0" />
+              <point x="840.2685941043084" y="576.0" />
+              <point x="830.0009070294784" y="576.0" />
+              <point x="58.00000000000001" y="114.0" />
+            </edge>
+            <edge source="be.kdg.processor.deserializers.LicensePlateDeserializer" target="be.kdg.processor.model.licenseplate.LicensePlateInfo">
+              <point x="132.66666666666646" y="25.5" />
+              <point x="1312.167573696145" y="303.0" />
+              <point x="1251.834240362812" y="303.0" />
+              <point x="72.33333333333343" y="-81.0" />
+            </edge>
+            <edge source="be.kdg.processor.Receivers.MessageReceiver" target="be.kdg.processor.model.CameraMessage">
+              <point x="-180.33333333333337" y="-70.0" />
+              <point x="302.6675736961451" y="1142.0" />
+              <point x="0.0" y="1142.0" />
+              <point x="0.0" y="903.0" />
+              <point x="190.0009070294784" y="903.0" />
+              <point x="-88.5" y="136.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="8.599999999999987" x="86.90697674418618" y="1376.3064295485628" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Fields</Category>
+            <Category>Methods</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
         </state>
       </provider>
     </entry>

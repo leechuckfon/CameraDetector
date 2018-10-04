@@ -1,4 +1,4 @@
-package be.kdg.simulator.config;
+package be.kdg.simulator.serializers;
 
 import be.kdg.simulator.model.CameraMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;

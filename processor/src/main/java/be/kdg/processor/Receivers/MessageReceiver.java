@@ -1,12 +1,11 @@
 package be.kdg.processor.Receivers;
 
 
-import be.kdg.processor.converter.XMLConverter;
+import be.kdg.processor.deserializers.XMLConverter;
 import be.kdg.processor.model.CameraMessage;
-import be.kdg.processor.serviceUser.BoeteAnalyser;
+import be.kdg.processor.analysers.BoeteAnalyser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
@@ -42,7 +41,7 @@ public class MessageReceiver {
     }
 
     public void receiveMessage(CameraMessage message) {
-        ba.checkOvertredingen(message);
+        ba.checkEmissieOvertreding(message);
     }
 
 }

@@ -1,10 +1,9 @@
-package be.kdg.processor.serviceUser;
+package be.kdg.processor.analysers;
 
-import be.kdg.processor.model.LicensePlateInfo;
+import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.sa.services.LicensePlateNotFoundException;
 import be.kdg.sa.services.LicensePlateServiceProxy;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

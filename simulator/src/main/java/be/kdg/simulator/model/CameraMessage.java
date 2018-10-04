@@ -1,5 +1,6 @@
 package be.kdg.simulator.model;
 
+import be.kdg.simulator.serializers.SerializeLocalDateTime;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.LocalDateTime;

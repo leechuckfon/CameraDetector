@@ -1,4 +1,4 @@
-package be.kdg.simulator.model;
+package be.kdg.simulator.serializers;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;

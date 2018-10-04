@@ -1,11 +1,13 @@
-package be.kdg.processor.model;
+package be.kdg.processor.deserializers;
 
+import be.kdg.processor.model.camera.Camera;
+import be.kdg.processor.model.camera.CameraSegment;
+import be.kdg.processor.model.camera.Location;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.IntNode;
 
 import java.io.IOException;
 
@@ -15,7 +17,7 @@ public class CameraDeserializer extends JsonDeserializer<Camera> {
         int id;
         Location loc;
         CameraSegment seg = null;
-        int euroNorm= Integer.MAX_VALUE;
+        int euroNorm= Integer.MIN_VALUE;
         JsonNode node = p.getCodec().readTree(p);
         id = (Integer) (node.get("cameraId").numberValue());
         loc = new Location((double)node.get("location").get("lat").numberValue(),(double)node.get("location").get("long").numberValue());

@@ -1,4 +1,4 @@
-package be.kdg.processor.model;
+package be.kdg.processor.model.camera;
 
 public class Location {
     private double lat;

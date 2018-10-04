@@ -1,8 +1,9 @@
-package be.kdg.processor.model;
+package be.kdg.processor.model.licenseplate;
 
+import be.kdg.processor.deserializers.LicensePlateDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-@JsonDeserialize(using = LicensePlateSerializer.class)
+@JsonDeserialize(using = LicensePlateDeserializer.class)
 public class LicensePlateInfo {
     private String plateId;
     private String nationalNumber;
