@@ -2,10 +2,10 @@ package be.kdg.processor.model;
 
 public class CameraSegment {
     private int connectedCameraId;
-    private long distance;
+    private int distance;
     private int speedLimit;
 
-    public CameraSegment(int connectedCameraId, long distance, int speedLimit) {
+    public CameraSegment(int connectedCameraId, int distance, int speedLimit) {
         this.connectedCameraId = connectedCameraId;
         this.distance = distance;
         this.speedLimit = speedLimit;
@@ -15,7 +15,7 @@ public class CameraSegment {
         return connectedCameraId;
     }
 
-    public long getDistance() {
+    public int getDistance() {
         return distance;
     }
 

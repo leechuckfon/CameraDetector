@@ -3,12 +3,14 @@ package be.kdg.processor.Receivers;
 
 import be.kdg.processor.converter.XMLConverter;
 import be.kdg.processor.model.CameraMessage;
+import be.kdg.processor.serviceUser.BoeteAnalyser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -19,9 +21,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageReceiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageReceiver.class);
+    @Autowired
+    private BoeteAnalyser ba;
+
 
     @Bean
-    SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
+    private SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
                                              MessageListenerAdapter listenerAdapter) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
@@ -32,12 +37,12 @@ public class MessageReceiver {
     }
 
     @Bean
-    MessageListenerAdapter listenerAdapter(MessageReceiver receiver) {
+    private MessageListenerAdapter listenerAdapter(MessageReceiver receiver) {
         return new MessageListenerAdapter(receiver, "receiveMessage");
     }
 
     public void receiveMessage(CameraMessage message) {
-        
+        ba.checkOvertredingen(message);
     }
 
 }

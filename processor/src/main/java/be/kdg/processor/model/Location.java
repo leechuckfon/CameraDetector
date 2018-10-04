@@ -1,19 +1,19 @@
 package be.kdg.processor.model;
 
 public class Location {
-    private float lat;
-    private float longitude;
+    private double lat;
+    private double longitude;
 
-    public Location(float lat, float longitude) {
+    public Location(double lat, double longitude) {
         this.lat = lat;
         this.longitude = longitude;
     }
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 }

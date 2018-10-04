@@ -1,7 +1,11 @@
 package be.kdg.processor.serviceUser;
 
+import be.kdg.processor.model.Camera;
+import be.kdg.processor.model.CameraDeserializer;
+import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.CameraServiceProxy;
-import org.springframework.context.annotation.Bean;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -12,15 +16,17 @@ public class CameraAnalyser {
     private CameraServiceProxy cameraProxy;
 
     public CameraAnalyser() {
-        this.cameraProxy = new CameraServiceProxy();
+        cameraProxy = new CameraServiceProxy();
     }
 
-    public int AskCamera(int id) {
+    public Camera AskInfo(int id) throws IOException, CameraNotFoundException{
+        Camera a;
         try {
-            cameraProxy.get(id);
-        } catch (IOException e) {
-
+                ObjectMapper obj = new ObjectMapper();
+                a = obj.readValue(cameraProxy.get(id),be.kdg.processor.model.Camera.class);
+        } catch (IOException | CameraNotFoundException e) {
+            throw(e);
         }
-        return 1;
+        return a;
     }
 }

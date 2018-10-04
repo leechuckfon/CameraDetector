@@ -1,10 +1,12 @@
 package be.kdg.processor.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
+
 
 public class CameraMessage {
     private final int id;

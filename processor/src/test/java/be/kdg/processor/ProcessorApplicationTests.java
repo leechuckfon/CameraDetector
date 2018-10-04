@@ -1,7 +1,11 @@
 package be.kdg.processor;
 
+import be.kdg.processor.model.Camera;
+import be.kdg.processor.model.CameraDeserializer;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.CameraServiceProxy;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
