@@ -2,7 +2,6 @@ package be.kdg.simulator.messengers;
 
 import be.kdg.simulator.serializers.XMLConverter;
 import be.kdg.simulator.generators.MessageGenerator;
-import be.kdg.simulator.Receivers.MessageReceiver;
 import be.kdg.simulator.model.CameraMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -15,8 +14,7 @@ public class QueueMessenger implements Messenger {
     private final RabbitTemplate rabbitTemplate;
     private final MessageGenerator messageGenerator;
 
-    public QueueMessenger(MessageReceiver receiver, RabbitTemplate rabbitTemplate,MessageGenerator messageGenerator) {
-        MessageReceiver receiver1 = receiver;
+    public QueueMessenger( RabbitTemplate rabbitTemplate,MessageGenerator messageGenerator) {
         this.rabbitTemplate = rabbitTemplate;
         this.messageGenerator = messageGenerator;
     }
