@@ -1,5 +1,7 @@
 package be.kdg.processor.analysers;
 
+import be.kdg.processor.adapters.CameraAdapter;
+import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
@@ -9,11 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -21,9 +21,9 @@ import java.util.*;
 @Component
 public class BoeteAnalyser {
     @Autowired
-    private CameraAnalyser ca;
+    private CameraAdapter ca;
     @Autowired
-    private LicensePlateAnalyser lps;
+    private LicensePlateAdapter lps;
     private static final Logger LOGGER = LoggerFactory.getLogger(BoeteAnalyser.class);
     private Map<String, LocalDateTime> criminelen;
     private long emissieTijd;
@@ -42,35 +42,38 @@ public class BoeteAnalyser {
 //            System.out.println("euroNorm:" + emissie.getEuroNorm());
 //            System.out.println("nummer:" + perp.getEuroNumber());
 
-            if (perp.getEuroNumber() < emissie.getEuroNorm()){
+            if (perp.getEuroNumber() < emissie.getEuroNorm()) {
                 if (!criminelen.containsKey(perp.getPlateId())) {
-                    criminelen.put(perp.getPlateId(),m.getTimestamp());
+                    criminelen.put(perp.getPlateId(), m.getTimestamp());
                     LOGGER.info("auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
                 } else {
                     LocalDateTime laatsteKeer = criminelen.get(perp.getPlateId());
-                    if (laatsteKeer.until(m.getTimestamp(),ChronoUnit.SECONDS) > emissieTijd) {
-                        criminelen.replace(perp.getPlateId(),m.getTimestamp());
+                    if (laatsteKeer.until(m.getTimestamp(), ChronoUnit.SECONDS) > emissieTijd) {
+                        criminelen.replace(perp.getPlateId(), m.getTimestamp());
                         LOGGER.info("auto: " + perp.getPlateId() + " heeft nog een emissieovertreding.");
-
                     }
                 }
             }
 
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
             if (e.getClass() == IOException.class) {
-                LOGGER.error("IOException gebeurd tijdens het checken van overtredingen");
+                LOGGER.warn("IOException gebeurd tijdens het checken van overtredingen");
             }
             if (e.getClass() == CameraNotFoundException.class) {
-                LOGGER.error("Camera niet gevonden");
+                LOGGER.warn("Camera niet gevonden");
             }
             if (e.getClass() == LicensePlateNotFoundException.class) {
-                LOGGER.error("Nummerplaat niet gevonden");
+                LOGGER.warn("Nummerplaat niet gevonden");
             }
         }
     }
 
     public void checkSnelheidOvertreding(CameraMessage m) {
         //TODO: snelheidOvertreding toevoegen
+//        Camera emissie = ca.AskInfo(m.getId());
+//        LicensePlateInfo perp = lps.askInfo(m.getLicensePlate());
+//
+//        int help = emissie.getSegment().getDistance();
     }
 
 }

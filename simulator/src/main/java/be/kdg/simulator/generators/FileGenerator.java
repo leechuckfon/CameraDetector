@@ -70,7 +70,6 @@ public class FileGenerator implements MessageGenerator{
                 cmL.remove(0);
                 return r;
             }
-            System.exit(0);
             return null;
     }
 }

@@ -14,13 +14,6 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(value = "messenger.type",havingValue = "commandline")
 public class CommandlineMessenger implements Messenger {
 
-    private final MessageGenerator messageGenerator;
-
-    // Constructor Injection
-    public CommandlineMessenger(MessageGenerator messageGenerator) {
-        this.messageGenerator = messageGenerator;
-    }
-
     @Override
     public void sendMessage(CameraMessage cameraMessage) {
         if (  cameraMessage != null) {

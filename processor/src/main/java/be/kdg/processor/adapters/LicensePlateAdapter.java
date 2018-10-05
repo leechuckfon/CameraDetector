@@ -1,4 +1,4 @@
-package be.kdg.processor.analysers;
+package be.kdg.processor.adapters;
 
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.sa.services.LicensePlateNotFoundException;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class LicensePlateAnalyser {
+public class LicensePlateAdapter {
 
     private LicensePlateServiceProxy lps;
 
-    public LicensePlateAnalyser() {
+    public LicensePlateAdapter() {
         this.lps = new LicensePlateServiceProxy();
     }
 

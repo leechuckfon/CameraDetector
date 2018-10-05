@@ -1,4 +1,4 @@
-package be.kdg.processor.Receivers;
+package be.kdg.processor.receivers;
 
 import be.kdg.processor.model.CameraMessage;
 

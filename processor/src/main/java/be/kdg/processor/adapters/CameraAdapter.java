@@ -1,4 +1,4 @@
-package be.kdg.processor.analysers;
+package be.kdg.processor.adapters;
 
 import be.kdg.processor.model.camera.Camera;
 import be.kdg.sa.services.CameraNotFoundException;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class CameraAnalyser {
+public class CameraAdapter {
 
     private CameraServiceProxy cameraProxy;
 
-    public CameraAnalyser() {
+    public CameraAdapter() {
         cameraProxy = new CameraServiceProxy();
     }
 

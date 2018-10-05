@@ -1,4 +1,4 @@
-package be.kdg.processor.Receivers;
+package be.kdg.processor.receivers;
 
 
 import be.kdg.processor.deserializers.XMLConverter;
@@ -41,7 +41,7 @@ public class MessageReceiver {
     }
 
     public void receiveMessage(CameraMessage message) {
-        LOGGER.info("Message received: " +message.toString());
+        LOGGER.info("Message received: " + message.toString());
         ba.checkEmissieOvertreding(message);
     }
 
