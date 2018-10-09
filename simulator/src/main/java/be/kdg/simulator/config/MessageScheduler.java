@@ -49,8 +49,5 @@ public class MessageScheduler {
 
         mess.sendMessage(cam);
         LOGGER.info(cam + "is verzonden");
-        scheduler.schedule(this::tick, delay, TimeUnit.MILLISECONDS);
-
-        //TODO Send message
-    }
+        scheduler.schedule(this::tick, delay, TimeUnit.MILLISECONDS); }
 }

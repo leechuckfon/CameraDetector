@@ -34,7 +34,7 @@ public class MessageReceiver {
     public MessageReceiver(@Value("${timeframeSnelheid}") long modifier,  @Value("${emissieTijd}") long delay) {
         this.modifier = modifier;
         current = System.currentTimeMillis();
-        end = System.currentTimeMillis() + (modifier*100);
+        end = System.currentTimeMillis() + (modifier);
         this.delay = delay;
     }
 

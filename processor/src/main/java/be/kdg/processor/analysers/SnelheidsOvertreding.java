@@ -12,8 +12,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SnelheidsOvertreding implements Overtreding {
 
@@ -25,6 +29,7 @@ public class SnelheidsOvertreding implements Overtreding {
     private long end;
     private static final Logger LOGGER = LoggerFactory.getLogger(SnelheidsOvertreding.class);
     private static List<CameraMessage> bufferedMessages = new ArrayList<>();
+    private Map<String,List<CameraMessage>> beginEind = new HashMap<>();
 
     public SnelheidsOvertreding(long start, long end) {
         this.start = start;
@@ -43,10 +48,43 @@ public class SnelheidsOvertreding implements Overtreding {
             }
         } else {
             try {
+                if (m != null && !bufferedMessages.contains(m)) {
+                    bufferedMessages.add(m);
+                }
+
+                for (CameraMessage bufferedMessage : bufferedMessages) {
+                    if(!(beginEind.containsKey(bufferedMessage.getLicensePlate()))){
+                        beginEind.put(bufferedMessage.getLicensePlate(),new ArrayList<>());
+                    }
+                        beginEind.get(bufferedMessage.getLicensePlate()).add(bufferedMessage);
+
+                }
+
                 ca = new CameraAdapter();
                 lps = new LicensePlateAdapter();
-                Camera snelheid = ca.AskInfo(m.getId());
-                LicensePlateInfo lpi = lps.askInfo(m.getLicensePlate());
+
+                for (String s : beginEind.keySet()) {
+                    if (beginEind.get(s).size() != 1) {
+                        CameraMessage begin = beginEind.get(s).get(0);
+                        CameraMessage eind = beginEind.get(s).get(1);
+                        int max_snelheid = ca.AskInfo(begin.getId()).getSegment().getSpeedLimit();
+                        LocalDateTime b = begin.getTimestamp();
+                        LocalDateTime e = eind.getTimestamp();
+                        int afstand = ca.AskInfo(begin.getId()).getSegment().getDistance();
+                        long millis = (b.until(e, ChronoUnit.MILLIS));
+                        int berekendeAfstand = afstand*3600000;
+                        if ((berekendeAfstand/millis) > max_snelheid) {
+                            long kmph = (afstand/(b.until(e, ChronoUnit.MILLIS)/3600000));
+                            System.out.println(kmph);
+                            System.out.println(s + " heeft een boete voor te snel rijden.");
+                        }
+
+                    }
+                }
+
+//                int limiet = snelheid.getSegment().getSpeedLimit();
+//                int distance = snelheid.getSegment().getDistance();
+//                float
 
 
             } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
