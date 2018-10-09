@@ -71,10 +71,10 @@ public class SnelheidsOvertreding implements Overtreding {
                         LocalDateTime b = begin.getTimestamp();
                         LocalDateTime e = eind.getTimestamp();
                         int afstand = ca.AskInfo(begin.getId()).getSegment().getDistance();
-                        long millis = (b.until(e, ChronoUnit.MILLIS));
-                        int berekendeAfstand = afstand*3600000;
+                        float millis = (b.until(e, ChronoUnit.MILLIS)/3600000);
+                        long berekendeAfstand = afstand;
                         if ((berekendeAfstand/millis) > max_snelheid) {
-                            long kmph = (afstand/(b.until(e, ChronoUnit.MILLIS)/3600000));
+                            float kmph = (berekendeAfstand/millis);
                             System.out.println(kmph);
                             System.out.println(s + " heeft een boete voor te snel rijden.");
                         }
