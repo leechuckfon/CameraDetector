@@ -3,7 +3,6 @@ package be.kdg.processor.receivers;
 
 import be.kdg.processor.analysers.EmissieOvertreding;
 import be.kdg.processor.analysers.SnelheidsOvertreding;
-import be.kdg.processor.buffers.MessageBuffer;
 import be.kdg.processor.deserializers.XMLConverter;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.processor.analysers.BoeteAnalyser;
@@ -17,8 +16,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-
 /**
  * Klasse MessageReceiver haalt messages af van de queue
  */
@@ -28,20 +25,6 @@ public class MessageReceiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageReceiver.class);
     @Autowired
     private BoeteAnalyser ba;
-    private long modifier;
-    private long current;
-    private final long end;
-    private long delay;
-    private MessageBuffer buffer;
-
-
-    public MessageReceiver(@Value("${timeframeSnelheid}") long modifier,  @Value("${emissieTijd}") long delay) {
-        this.modifier = modifier;
-        current = System.currentTimeMillis();
-        end = System.currentTimeMillis() + (modifier);
-        this.delay = delay;
-        buffer = new MessageBuffer();
-    }
 
     @Bean
     private SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,
@@ -61,10 +44,8 @@ public class MessageReceiver {
 
     public void receiveMessage(CameraMessage message) {
         LOGGER.info("Message received: " + message.toString());
-        ba.checkOvertreding(new EmissieOvertreding(delay),message);
-        buffer.addMessage(message);
-//        current = System.currentTimeMillis();
-//        ba.checkOvertreding(new SnelheidsOvertreding(current,end),message);
+        ba.checkOvertreding(message);
+
     }
 
 }

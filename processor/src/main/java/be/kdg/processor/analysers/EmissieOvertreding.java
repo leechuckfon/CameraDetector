@@ -11,13 +11,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.Map;
-
+@Component
 public class EmissieOvertreding implements Overtreding {
 
     @Autowired
@@ -28,22 +29,18 @@ public class EmissieOvertreding implements Overtreding {
     private Map<String, LocalDateTime> criminelen;
     private long emissieTijd;
 
-    public EmissieOvertreding( long emissieTijd) {
+    public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd) {
         this.criminelen = new HashMap<>();
         this.emissieTijd = emissieTijd;
     }
 
     @Override
-    public void checkOvertreding(CameraMessage m) {
+    public void handleMessage(CameraMessage m) {
         try {
             ca = new CameraAdapter();
             lps = new LicensePlateAdapter();
             Camera emissie = ca.AskInfo(m.getId());
             LicensePlateInfo perp = lps.askInfo(m.getLicensePlate());
-
-//            System.out.println("Camera: " +emissie.getCameraId());
-//            System.out.println("euroNorm:" + emissie.getEuroNorm());
-//            System.out.println("nummer:" + perp.getEuroNumber());
 
             if (perp.getEuroNumber() < emissie.getEuroNorm()) {
                 if (!criminelen.containsKey(perp.getPlateId())) {

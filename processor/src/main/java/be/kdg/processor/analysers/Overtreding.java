@@ -3,5 +3,5 @@ package be.kdg.processor.analysers;
 import be.kdg.processor.model.CameraMessage;
 
 public interface Overtreding {
-    void checkOvertreding(CameraMessage m);
+    void handleMessage(CameraMessage m);
 }
