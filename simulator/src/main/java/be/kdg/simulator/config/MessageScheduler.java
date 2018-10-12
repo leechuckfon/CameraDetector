@@ -42,12 +42,13 @@ public class MessageScheduler {
         if (cam != null) {
             if (cam.getDelay() != -1) {
                 delay = cam.getDelay();
+                scheduler.schedule(this::tick, delay, TimeUnit.MILLISECONDS);
+                mess.sendMessage(cam);
+                LOGGER.info(cam + "is verzonden");
             }
         } else {
+            scheduler.shutdown();
             return;
         }
-
-        mess.sendMessage(cam);
-        LOGGER.info(cam + "is verzonden");
-        scheduler.schedule(this::tick, delay, TimeUnit.MILLISECONDS); }
+    }
 }

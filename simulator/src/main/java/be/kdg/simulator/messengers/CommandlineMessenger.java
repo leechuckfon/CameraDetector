@@ -19,8 +19,7 @@ public class CommandlineMessenger implements Messenger {
         if (  cameraMessage != null) {
             System.out.println(cameraMessage.toString());
         } else {
-            System.exit(0);
-
+        return;
         }
     }
 }

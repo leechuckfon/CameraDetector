@@ -64,7 +64,7 @@ public class SnelheidsOvertreding implements Overtreding {
                 lps = new LicensePlateAdapter();
 
                 for (String s : beginEind.keySet()) {
-                    if (beginEind.get(s).size() != 1) {
+                    if (beginEind.get(s).size() > 1) {
                         CameraMessage begin = beginEind.get(s).get(0);
                         CameraMessage eind = beginEind.get(s).get(1);
                         int max_snelheid = ca.AskInfo(begin.getId()).getSegment().getSpeedLimit();
