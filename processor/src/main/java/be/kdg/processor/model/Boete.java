@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,9 +17,21 @@ import javax.persistence.Id;
 public class Boete {
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
+    @Column
     private String type;
+    @Column
     private int betaling;
-    private int snelheicEuronorm;
+    @Column
+    private int snelheidEuronorm;
+    @Column
     private int maxSnelheidMaxEuronorm;
+
+    public Boete(String type, int snelheidEuronorm, int maxSnelheidMaxEuronorm) {
+        this.type = type;
+        this.snelheidEuronorm = snelheidEuronorm;
+        this.maxSnelheidMaxEuronorm = maxSnelheidMaxEuronorm;
+    }
+
+
 }

@@ -7,10 +7,12 @@ import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
+import ch.qos.logback.core.util.FixedDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -34,6 +36,7 @@ public class EmissieOvertreding implements Overtreding {
         this.emissieTijd = emissieTijd;
     }
 
+
     @Override
     public void handleMessage(CameraMessage m) {
         try {
@@ -55,16 +58,31 @@ public class EmissieOvertreding implements Overtreding {
                 }
             }
 
+
+            for (String s : criminelen.keySet()) {
+                LocalDateTime ldt = criminelen.get(s);
+                ldt.until(LocalDateTime.now(),ChronoUnit.SECONDS);
+
+            }
+
+
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
             if (e.getClass() == IOException.class) {
                 LOGGER.warn("IOException gebeurd tijdens het checken van overtredingen");
+                //cache bestand voor latere check
+                
             }
             if (e.getClass() == CameraNotFoundException.class) {
                 LOGGER.warn("Camera niet gevonden");
+
             }
             if (e.getClass() == LicensePlateNotFoundException.class) {
                 LOGGER.warn("Nummerplaat niet gevonden");
             }
         }
+    }
+
+    private void cacheMessage(CameraMessage m) {
+
     }
 }
