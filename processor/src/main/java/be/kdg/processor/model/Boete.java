@@ -27,11 +27,13 @@ public class Boete {
     @Column
     private int maxSnelheidMaxEuronorm;
 
-    public Boete(String type, int snelheidEuronorm, int maxSnelheidMaxEuronorm) {
+    public Boete(String type, int betaling, int snelheidEuronorm, int maxSnelheidMaxEuronorm) {
         this.type = type;
+        this.betaling = betaling;
         this.snelheidEuronorm = snelheidEuronorm;
         this.maxSnelheidMaxEuronorm = maxSnelheidMaxEuronorm;
     }
 
-
+    public Boete() {
+    }
 }
