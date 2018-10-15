@@ -12,7 +12,6 @@ import javax.persistence.Id;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 @Entity
 public class Boete {
     @Id
@@ -34,6 +33,5 @@ public class Boete {
         this.maxSnelheidMaxEuronorm = maxSnelheidMaxEuronorm;
     }
 
-    public Boete() {
-    }
+
 }

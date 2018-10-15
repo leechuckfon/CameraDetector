@@ -32,7 +32,7 @@ public class BoeteService {
 
     public List<Boete> loadAll() throws BoeteException{
         List<Boete> optionalBoeteList = boeteRepo.findAll();
-        if (optionalBoeteList.size() == 0) {
+        if (optionalBoeteList.size() != 0) {
             return optionalBoeteList;
         }
         throw new BoeteException("geen boetes gevonden.");

@@ -1,6 +1,7 @@
 package be.kdg.processor.controllers;
 
 import be.kdg.processor.dto.BoeteDTO;
+import be.kdg.processor.dto.ListBoeteDTO;
 import be.kdg.processor.model.Boete;
 import be.kdg.processor.services.BoeteException;
 import be.kdg.processor.services.BoeteService;
@@ -24,9 +25,11 @@ public class BoeteRestController {
     }
 
     @GetMapping("/boete/getall")
-    public ResponseEntity<List<Boete>> loadAllBoetes() throws BoeteException {
+    public ResponseEntity<ListBoeteDTO> loadAllBoetes() throws BoeteException {
         List<Boete> boete = boeteService.loadAll();
-        return new ResponseEntity<>(boete, HttpStatus.OK);
+        ListBoeteDTO listBoeteDTO = new ListBoeteDTO(boete);
+        return new ResponseEntity<>(listBoeteDTO, HttpStatus.OK);
+
     }
 
     @PostMapping("/boetes")
