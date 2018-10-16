@@ -2,13 +2,12 @@ package be.kdg.processor.controllers;
 
 import be.kdg.processor.dto.BoeteDTO;
 import be.kdg.processor.dto.ListBoeteDTO;
-import be.kdg.processor.model.Boete;
+import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.services.BoeteException;
 import be.kdg.processor.services.BoeteService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class BoeteRestController {
     }
 
     @GetMapping("/boete/getall")
-    public ResponseEntity<ListBoeteDTO> loadAllBoetes() throws BoeteException {
+    public ResponseEntity<ListBoeteDTO> loadAll() throws BoeteException {
         List<Boete> boete = boeteService.loadAll();
         ListBoeteDTO listBoeteDTO = new ListBoeteDTO(boete);
         return new ResponseEntity<>(listBoeteDTO, HttpStatus.OK);
@@ -35,7 +34,7 @@ public class BoeteRestController {
     @PostMapping("/boetes")
     public ResponseEntity<BoeteDTO> createBoete(@RequestBody BoeteDTO boeteDTO) {
         Boete mappedBoete = modelMapper.map(boeteDTO, Boete.class);
-        Boete boeteResponse = boeteService.save(mappedBoete);
+        Boete boeteResponse = boeteService.saveBoete(mappedBoete);
         return new ResponseEntity<>(modelMapper.map(boeteResponse, BoeteDTO.class), HttpStatus.CREATED);
     }
 }

@@ -3,8 +3,12 @@ package be.kdg.processor.analysers;
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
+import be.kdg.processor.model.boete.BOETETYPES;
+import be.kdg.processor.model.boete.Boete;
+import be.kdg.processor.model.boete.Calculators.EmissieBerekening;
 import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
+import be.kdg.processor.services.BoeteService;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
 import ch.qos.logback.core.util.FixedDelay;
@@ -30,10 +34,14 @@ public class EmissieOvertreding implements Overtreding {
     private static final Logger LOGGER = LoggerFactory.getLogger(EmissieOvertreding.class);
     private Map<String, LocalDateTime> criminelen;
     private long emissieTijd;
+    private final EmissieBerekening emissieBerekening;
+    private int boetefactor;
 
-    public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd) {
+    public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd, BoeteService boeteService, @Value("${emissieboetefactor}") int boetefactor, EmissieBerekening emissieBerekening) {
         this.criminelen = new HashMap<>();
         this.emissieTijd = emissieTijd;
+        this.boetefactor = boetefactor;
+        this.emissieBerekening = emissieBerekening;
     }
 
 
@@ -48,6 +56,9 @@ public class EmissieOvertreding implements Overtreding {
             if (perp.getEuroNumber() < emissie.getEuroNorm()) {
                 if (!criminelen.containsKey(perp.getPlateId())) {
                     criminelen.put(perp.getPlateId(), m.getTimestamp());
+
+                    emissieBerekening.berekenBoete(boetefactor,emissie.getCameraId(),"auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
+
                     LOGGER.info("auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
                 } else {
                     LocalDateTime laatsteKeer = criminelen.get(perp.getPlateId());
@@ -58,13 +69,7 @@ public class EmissieOvertreding implements Overtreding {
                 }
             }
 
-
-            for (String s : criminelen.keySet()) {
-                LocalDateTime ldt = criminelen.get(s);
-                ldt.until(LocalDateTime.now(),ChronoUnit.SECONDS);
-
-            }
-
+          verwijderDetecties();
 
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
             if (e.getClass() == IOException.class) {
@@ -78,6 +83,16 @@ public class EmissieOvertreding implements Overtreding {
             }
             if (e.getClass() == LicensePlateNotFoundException.class) {
                 LOGGER.warn("Nummerplaat niet gevonden");
+            }
+        }
+    }
+
+    private void verwijderDetecties(){
+        for (String s : criminelen.keySet()) {
+            LocalDateTime ldt = criminelen.get(s);
+            Long tijdSindsBoete = ldt.until(LocalDateTime.now(),ChronoUnit.SECONDS);
+            if (tijdSindsBoete > emissieTijd) {
+                criminelen.remove(s);
             }
         }
     }

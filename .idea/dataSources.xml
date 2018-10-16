@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="BoeteDB" uuid="442809ef-bbb2-45cb-b126-8ec314274ed7">
+      <driver-ref>h2.unified</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.h2.Driver</jdbc-driver>
+      <jdbc-url>jdbc:h2:mem:BoeteDB;DB_CLOSE_DELAY=1;DB_CLOSE_ON_EXIT=FALSE</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -1,6 +1,6 @@
 package be.kdg.processor.services;
 
-import be.kdg.processor.model.Boete;
+import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.repos.BoeteRepo;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +18,11 @@ public class BoeteService {
     }
 
 
-    public Boete save(Boete Boete){
+    public Boete saveBoete(Boete Boete){
         return boeteRepo.save(Boete);
     }
 
-    public Boete load(long id) throws BoeteException{
+    public Boete loadBoete(long id) throws BoeteException{
         Optional<Boete> optionalBoete = boeteRepo.findById(id);
         if (((Optional) optionalBoete).isPresent()) {
             return optionalBoete.get();
@@ -35,6 +35,6 @@ public class BoeteService {
         if (optionalBoeteList.size() != 0) {
             return optionalBoeteList;
         }
-        throw new BoeteException("geen boetes gevonden.");
+        throw new BoeteException("geen Boetes gevonden.");
     }
 }

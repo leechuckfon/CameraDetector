@@ -10,4 +10,5 @@ public class BoeteRestConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
 }
