@@ -5,6 +5,8 @@ import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.services.BoeteService;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class SnelheidBerekening implements BoeteBerekening {
     private final BoeteService boeteService;
@@ -15,8 +17,8 @@ public class SnelheidBerekening implements BoeteBerekening {
 
 
     @Override
-        public void berekenBoete(int boetefactor, int cameraId, String info) {
+        public void berekenBoete(int boetefactor, int cameraId, String info, LocalDateTime overtredingsTijd) {
         /*echte boeteberekening nog te doen*/
-            boeteService.saveBoete(new Boete(BOETETYPES.SNELHEID,boetefactor,cameraId,info));
+            boeteService.saveBoete(new Boete(BOETETYPES.SNELHEID,boetefactor,cameraId,info,overtredingsTijd));
         }
 }

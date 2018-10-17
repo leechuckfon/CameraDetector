@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -21,12 +22,26 @@ public class Boete {
     @Column
     private int cameraId;
     @Column
+    private LocalDateTime overtredingstijd;
+    @Column
     private String overtredingsInfo;
+    @Column
+    private boolean goedgekeurd = false;
+    @Column
+    private String motivering="Het boetebedrag is niet aangepast.";
 
-    public Boete(BOETETYPES type, int betaling, int cameraId, String overtredingsInfo) {
+    public Boete(BOETETYPES type, int betaling, int cameraId, String overtredingsInfo,LocalDateTime overtredingstijd) {
         this.type = type;
         this.betaling = betaling;
+        this.overtredingstijd = overtredingstijd;
         this.cameraId = cameraId;
         this.overtredingsInfo = overtredingsInfo;
+    }
+
+    public Boete pasAanBedrag(int nieuwBedrag, String motivering) {
+        if (!motivering.isEmpty()) {
+            this.betaling = nieuwBedrag;
+        }
+        return this;
     }
 }

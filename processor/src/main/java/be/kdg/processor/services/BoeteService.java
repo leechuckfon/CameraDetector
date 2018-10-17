@@ -5,8 +5,11 @@ import be.kdg.processor.repos.BoeteRepo;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -36,5 +39,11 @@ public class BoeteService {
             return optionalBoeteList;
         }
         throw new BoeteException("geen Boetes gevonden.");
+    }
+
+    public List<Boete> filter(LocalDate beginSearch, LocalDate eindSearch) {
+    List<Boete> alleBoetes = boeteRepo.findAll();
+    List<Boete> gefilterdeBoetes = alleBoetes.stream().filter(x -> x.getOvertredingstijd().isBefore(eindSearch.atStartOfDay()) && x.getOvertredingstijd().isAfter(beginSearch.atStartOfDay())).collect(Collectors.toList());
+    return gefilterdeBoetes;
     }
 }
