@@ -16,7 +16,7 @@ public class EmissieBerekening implements BoeteBerekening {
     }
 
     @Override
-    public void berekenBoete(int boetefactor, int cameraId, String info, LocalDateTime overtredingsTijd) {
-        boeteService.saveBoete(new Boete(BOETETYPES.EMISSIE,boetefactor,cameraId,info,overtredingsTijd));
+    public void berekenBoete(int boetefactor, int cameraId,int overtredingsgetal,int maxtoegelatengetal, LocalDateTime overtredingsTijd) {
+        boeteService.saveBoete(new Boete(BOETETYPES.EMISSIE,boetefactor,cameraId,String.format("De auto has euronorm %d en het minimum van het segent was %d",overtredingsgetal,maxtoegelatengetal),overtredingsTijd));
     }
 }
