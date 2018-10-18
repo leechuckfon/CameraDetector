@@ -37,7 +37,7 @@ public class EmissieOvertreding implements Overtreding {
     private final EmissieBerekening emissieBerekening;
     private int boetefactor;
 
-    public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd, BoeteService boeteService, @Value("${emissieboetefactor}") int boetefactor, EmissieBerekening emissieBerekening) {
+    public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd, BoeteService boeteService, @Value("${boetefactoren.emissieboetefactor}") int boetefactor, EmissieBerekening emissieBerekening) {
         this.criminelen = new HashMap<>();
         this.emissieTijd = emissieTijd;
         this.boetefactor = boetefactor;
