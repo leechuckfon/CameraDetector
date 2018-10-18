@@ -57,7 +57,7 @@ public class EmissieOvertreding implements Overtreding {
                 if (!criminelen.containsKey(perp.getPlateId())) {
                     criminelen.put(perp.getPlateId(), m.getTimestamp());
 
-                    emissieBerekening.berekenBoete(boetefactor,emissie.getCameraId(),"auto: " + perp.getPlateId() + " heeft een emissieovertreding.",m.getTimestamp());
+                    emissieBerekening.berekenBoete(boetefactor,emissie.getCameraId(),perp.getEuroNumber(),emissie.getEuroNorm(),m.getTimestamp());
 
                     LOGGER.info("auto: " + perp.getPlateId() + " heeft een emissieovertreding.");
                 } else {
