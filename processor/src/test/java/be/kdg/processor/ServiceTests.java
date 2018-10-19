@@ -1,6 +1,6 @@
 package be.kdg.processor;
 
-import be.kdg.processor.model.boete.BOETETYPES;
+import be.kdg.processor.model.boete.BoeteTypes;
 import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.services.BoeteService;
 import org.hamcrest.Matchers;
@@ -34,7 +34,7 @@ public class ServiceTests {
 
     @Test
     public void serviceTest() {
-        Assert.assertNotNull(boeteService.saveBoete(new Boete(BOETETYPES.EMISSIE,50,1,"OvertredingTest", LocalDateTime.now())));
+        Assert.assertNotNull(boeteService.saveBoete(new Boete(BoeteTypes.EMISSIE,50,1,"OvertredingTest", LocalDateTime.now())));
         try {
             mockMvc.perform(MockMvcRequestBuilders.get("/api/boete/getall")).andDo(print()).andExpect(content().string(Matchers.containsString("OvertredingTest")));
         } catch (Exception e) {

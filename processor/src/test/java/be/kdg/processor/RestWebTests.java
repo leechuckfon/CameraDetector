@@ -1,6 +1,6 @@
 package be.kdg.processor;
 
-import be.kdg.processor.model.boete.BOETETYPES;
+import be.kdg.processor.model.boete.BoeteTypes;
 import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.services.BoeteService;
 import org.junit.Test;
@@ -35,7 +35,7 @@ public class RestWebTests {
 
     @Test
     public void restTest() {
-        boeteService.saveBoete(new Boete(BOETETYPES.EMISSIE,1000,1,"restTest", LocalDateTime.now()));
+        boeteService.saveBoete(new Boete(BoeteTypes.EMISSIE,1000,1,"restTest", LocalDateTime.now()));
         try {
             mockMvc.perform(put("/api/boetegoedkeuring/1")).andExpect(status().isAccepted()).andDo(print()).andExpect(content().string(containsString("\"goedgekeurd\":true")));
         } catch (Exception e) {

@@ -1,6 +1,6 @@
 package be.kdg.processor;
 
-import be.kdg.processor.analysers.EmissieOvertreding;
+import be.kdg.processor.overtredingen.EmissieOvertreding;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.CameraServiceProxy;

@@ -1,11 +1,10 @@
-package be.kdg.processor.analysers;
+package be.kdg.processor.overtredingen;
 
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
-import ch.qos.logback.core.util.FixedDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +20,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+/**
+ * @author Chuck Fon Lee
+ * De SnelheidsOvertredings klasse zal messages bufferen en checken voor een overtreding elke keer dat er een message binnenkomt.
+ * Als er messages zijn in de buffer die te oud zijn zullen deze worden verwijderd door deze klasse.
+ */
 
 @Component
 public class SnelheidsOvertreding {
@@ -69,9 +74,6 @@ public class SnelheidsOvertreding {
                         beginEind.get(bufferedMessage.getLicensePlate()).add(bufferedMessage);
 
                 }
-
-//                ca = new CameraAdapter();
-//                lps = new LicensePlateAdapter();
 
                 for (String s : beginEind.keySet()) {
                     if (beginEind.get(s).size() > 1) {

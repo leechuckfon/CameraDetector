@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * De LicensePlateAdapter zal via een nummerplaat de info gerelateerd aan deze nummerplaat opvragen aan de LicensePlateService en deze info teruggeven als een LicensePlateInfo object.
+ */
 @Component
 public class LicensePlateAdapter {
 

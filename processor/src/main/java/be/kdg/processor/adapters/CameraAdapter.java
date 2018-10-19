@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+/**
+ * De CameraAdapter zal via een id die hij binnenkrijgt, een camera opvragen van de CameraService en deze returnen als een Camera Object.
+ */
 @Component
 public class CameraAdapter {
 

@@ -4,6 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * De BoeteRestConfig is de configuration file voor de BoeteRestController.
+ */
 @Configuration
 public class BoeteRestConfig {
     @Bean

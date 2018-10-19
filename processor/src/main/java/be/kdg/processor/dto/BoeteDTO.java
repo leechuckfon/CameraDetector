@@ -1,6 +1,6 @@
 package be.kdg.processor.dto;
 
-import be.kdg.processor.model.boete.BOETETYPES;
+import be.kdg.processor.model.boete.BoeteTypes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class BoeteDTO {
-    private BOETETYPES type;
+    private BoeteTypes type;
     private int betaling;
     private String overtredingsInfo;
     private int cameraId;

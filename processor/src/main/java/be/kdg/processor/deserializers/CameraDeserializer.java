@@ -10,6 +10,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 
+/**
+ * De CameraDeserializer zal
+ */
 public class CameraDeserializer extends JsonDeserializer<Camera> {
     @Override
     public Camera deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {

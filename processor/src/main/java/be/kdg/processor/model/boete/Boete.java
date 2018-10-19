@@ -15,7 +15,7 @@ public class Boete {
     @GeneratedValue
     private Long id;
     @Column
-    private BOETETYPES type;
+    private BoeteTypes type;
     @Column
     private int betaling;
     @Column
@@ -29,7 +29,7 @@ public class Boete {
     @Column
     private String motivering="Het boetebedrag is niet aangepast.";
 
-    public Boete(BOETETYPES type, int betaling, int cameraId, String overtredingsInfo,LocalDateTime overtredingstijd) {
+    public Boete(BoeteTypes type, int betaling, int cameraId, String overtredingsInfo, LocalDateTime overtredingstijd) {
         this.type = type;
         this.betaling = betaling;
         this.overtredingstijd = overtredingstijd;

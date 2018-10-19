@@ -15,6 +15,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * De BoeteRestController is de Controller waardat API calls naar gemaakt kunnen worden.
+ * Hier kunnen boetes goedgekeurd of afgekeurd worden en boetes filteren tussen twee datums.
+ */
 @RestController
 @RequestMapping("/api")
 public class BoeteRestController {
@@ -31,7 +35,6 @@ public class BoeteRestController {
         List<Boete> boete = boeteService.loadAll();
         ListBoeteDTO listBoeteDTO = new ListBoeteDTO(boete);
         return new ResponseEntity<>(listBoeteDTO, HttpStatus.OK);
-
     }
 
     @PutMapping("/boetegoedkeuring/{id}")

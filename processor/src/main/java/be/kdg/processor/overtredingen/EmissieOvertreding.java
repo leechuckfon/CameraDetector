@@ -1,4 +1,4 @@
-package be.kdg.processor.analysers;
+package be.kdg.processor.overtredingen;
 
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
@@ -35,7 +35,7 @@ public class EmissieOvertreding implements Overtreding {
     private long emissieTijd;
     private final EmissieBerekening emissieBerekening;
     private int boetefactor;
-    private Map<CameraMessage,Integer> cachedMessages;
+    private ConcurrentHashMap<CameraMessage,Integer> cachedMessages;
     private List<Camera> opgevraagdeCameras;
 
     public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd, BoeteService boeteService, @Value("${boetefactoren.emissieboetefactor}") int boetefactor, EmissieBerekening emissieBerekening) {
@@ -43,7 +43,7 @@ public class EmissieOvertreding implements Overtreding {
         this.emissieTijd = emissieTijd;
         this.boetefactor = boetefactor;
         this.emissieBerekening = emissieBerekening;
-        cachedMessages = new HashMap<>();
+        cachedMessages = new ConcurrentHashMap<>();
         opgevraagdeCameras = new ArrayList<>();
     }
 
@@ -95,11 +95,10 @@ public class EmissieOvertreding implements Overtreding {
             if (!cachedMessages.containsKey(m)) {
                 cacheMessage(m);
             } else {
+                cachedMessages.replace(m, cachedMessages.get(m) + 1);
+                System.out.println(cachedMessages);
                 if (cachedMessages.get(m) >= 3) {
                     cachedMessages.remove(m);
-                } else {
-                    cachedMessages.replace(m, cachedMessages.get(m) + 1);
-                    System.out.println(cachedMessages);
                 }
             }
         }

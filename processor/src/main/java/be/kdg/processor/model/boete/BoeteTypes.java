@@ -1,6 +1,6 @@
 package be.kdg.processor.model.boete;
 
-public enum BOETETYPES {
+public enum BoeteTypes {
     EMISSIE,
     SNELHEID
 }

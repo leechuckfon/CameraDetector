@@ -1,4 +1,4 @@
-package be.kdg.processor.analysers;
+package be.kdg.processor.overtredingen;
 
 import be.kdg.processor.model.CameraMessage;
 
