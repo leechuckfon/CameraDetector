@@ -1,6 +1,5 @@
 package be.kdg.simulator.serializers;
 
-import be.kdg.simulator.config.MessageScheduler;
 import be.kdg.simulator.model.CameraMessage;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
@@ -10,8 +9,6 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageProperties;
 import org.springframework.stereotype.Component;
 
-import javax.jms.JMSException;
-import javax.jms.Session;
 import java.io.IOException;
 @Component
 public class XMLConverter implements org.springframework.amqp.support.converter.MessageConverter {

@@ -6,17 +6,12 @@ import be.kdg.processor.dto.ListBoeteDTO;
 import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.services.BoeteException;
 import be.kdg.processor.services.BoeteService;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.apache.coyote.Response;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.json.JsonObject;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 

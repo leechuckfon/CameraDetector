@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -27,7 +26,7 @@ public class BoeteService {
 
     public Boete loadBoete(long id) throws BoeteException{
         Optional<Boete> optionalBoete = boeteRepo.findById(id);
-        if (((Optional) optionalBoete).isPresent()) {
+        if (optionalBoete.isPresent()) {
             return optionalBoete.get();
         }
         throw new BoeteException("Boete niet gevonden");

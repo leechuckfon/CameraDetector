@@ -3,15 +3,12 @@ package be.kdg.processor.analysers;
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
-import be.kdg.processor.model.boete.BOETETYPES;
-import be.kdg.processor.model.boete.Boete;
 import be.kdg.processor.model.boete.Calculators.EmissieBerekening;
 import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.processor.services.BoeteService;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
-import ch.qos.logback.core.util.FixedDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +19,10 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
+
 @Component
 public class EmissieOvertreding implements Overtreding {
 
@@ -32,25 +31,36 @@ public class EmissieOvertreding implements Overtreding {
     @Autowired
     private LicensePlateAdapter lps;
     private static final Logger LOGGER = LoggerFactory.getLogger(EmissieOvertreding.class);
-    private Map<String, LocalDateTime> criminelen;
+    private ConcurrentHashMap<String, LocalDateTime> criminelen;
     private long emissieTijd;
     private final EmissieBerekening emissieBerekening;
     private int boetefactor;
+    private Map<CameraMessage,Integer> cachedMessages;
+    private List<Camera> opgevraagdeCameras;
 
     public EmissieOvertreding( @Value("${emissieTijd}") long emissieTijd, BoeteService boeteService, @Value("${boetefactoren.emissieboetefactor}") int boetefactor, EmissieBerekening emissieBerekening) {
-        this.criminelen = new HashMap<>();
+        this.criminelen = new ConcurrentHashMap<>();
         this.emissieTijd = emissieTijd;
         this.boetefactor = boetefactor;
         this.emissieBerekening = emissieBerekening;
+        cachedMessages = new HashMap<>();
+        opgevraagdeCameras = new ArrayList<>();
     }
 
 
     @Override
     public void handleMessage(CameraMessage m) {
         try {
-            ca = new CameraAdapter();
-            lps = new LicensePlateAdapter();
-            Camera emissie = ca.AskInfo(m.getId());
+            List<Integer> ids = opgevraagdeCameras.stream().map(x -> x.getCameraId()).collect(Collectors.toList());
+            if (!ids.contains(m.getId())) {
+                ca = new CameraAdapter();
+                lps = new LicensePlateAdapter();
+                Camera emissie = ca.AskInfo(m.getId());
+                opgevraagdeCameras.add(emissie);
+            }
+
+            Camera emissie = opgevraagdeCameras.stream().filter(x -> x.getCameraId() == m.getId()).findFirst().get();
+            System.out.println(ids);
             LicensePlateInfo perp = lps.askInfo(m.getLicensePlate());
 
             if (perp.getEuroNumber() < emissie.getEuroNorm()) {
@@ -69,8 +79,6 @@ public class EmissieOvertreding implements Overtreding {
                 }
             }
 
-          verwijderDetecties();
-
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
             if (e.getClass() == IOException.class) {
                 LOGGER.warn("IOException gebeurd tijdens het checken van overtredingen");
@@ -84,9 +92,19 @@ public class EmissieOvertreding implements Overtreding {
             if (e.getClass() == LicensePlateNotFoundException.class) {
                 LOGGER.warn("Nummerplaat niet gevonden");
             }
+            if (!cachedMessages.containsKey(m)) {
+                cacheMessage(m);
+            } else {
+                if (cachedMessages.get(m) >= 3) {
+                    cachedMessages.remove(m);
+                } else {
+                    cachedMessages.replace(m, cachedMessages.get(m) + 1);
+                    System.out.println(cachedMessages);
+                }
+            }
         }
     }
-
+    @Scheduled(fixedDelay = 60000L)
     private void verwijderDetecties(){
         for (String s : criminelen.keySet()) {
             LocalDateTime ldt = criminelen.get(s);
@@ -96,8 +114,16 @@ public class EmissieOvertreding implements Overtreding {
             }
         }
     }
+    @Scheduled(fixedDelay = 60000L)
+    private void retryMessage() {
+        for (CameraMessage cameraMessage : cachedMessages.keySet()) {
+            if (cameraMessage != null) {
+                handleMessage(cameraMessage);
+            }
+        }
+    }
 
     private void cacheMessage(CameraMessage m) {
-
+        cachedMessages.put(m,0);
     }
 }

@@ -1,8 +1,6 @@
 package be.kdg.processor.receivers;
 
 
-import be.kdg.processor.analysers.EmissieOvertreding;
-import be.kdg.processor.analysers.SnelheidsOvertreding;
 import be.kdg.processor.deserializers.XMLConverter;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.processor.analysers.BoeteAnalyser;
@@ -12,7 +10,6 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 

@@ -4,7 +4,6 @@ import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.camera.CameraSegment;
 import be.kdg.processor.model.camera.Location;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -13,7 +12,7 @@ import java.io.IOException;
 
 public class CameraDeserializer extends JsonDeserializer<Camera> {
     @Override
-    public Camera deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public Camera deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         int id;
         Location loc;
         CameraSegment seg = null;

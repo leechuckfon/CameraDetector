@@ -1,7 +1,6 @@
 package be.kdg.simulator;
 
 import be.kdg.simulator.generators.MessageGenerator;
-import be.kdg.simulator.messengers.QueueMessenger;
 import be.kdg.simulator.model.CameraMessage;
 import org.junit.Assert;
 import org.junit.Test;

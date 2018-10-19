@@ -3,15 +3,13 @@ package be.kdg.processor.analysers;
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
-import be.kdg.processor.model.camera.Camera;
-import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
+import ch.qos.logback.core.util.FixedDelay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cglib.core.Local;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +28,7 @@ public class SnelheidsOvertreding {
     private final CameraAdapter ca;
     private final LicensePlateAdapter lps;
     private static final Logger LOGGER = LoggerFactory.getLogger(SnelheidsOvertreding.class);
-    private static List<CameraMessage> bufferedMessages = new ArrayList<>();
+    private List<CameraMessage> bufferedMessages = new ArrayList<>();
     private Map<String,List<CameraMessage>> beginEind;
     private final long delay;
 
@@ -47,11 +45,19 @@ public class SnelheidsOvertreding {
         if (m != null) {
             bufferedMessages.add(m);
         }
+        checkOvertreding();
+    }
 
+    @Scheduled(fixedDelay = 60000L)
+    public void verwijderBufferedMessages() {
+        List<CameraMessage> matchedMessages =  bufferedMessages.stream().filter((x) -> x.getTimestamp().until(LocalDateTime.now(),ChronoUnit.MILLIS) > delay).collect(Collectors.toList());
+        for (CameraMessage matchedMessage : matchedMessages) {
+            bufferedMessages.remove(matchedMessage);
+        }
     }
 
     //maak methode die via @Scheduled om de zoveel tijd de messages in de buffer checkt.
-    @Scheduled(fixedDelayString = "${timeframeSnelheid}" )
+//    @Scheduled(fixedDelayString = "${timeframeSnelheid}" )
     public void checkOvertreding() {
 
             try {
@@ -76,18 +82,14 @@ public class SnelheidsOvertreding {
                         LocalDateTime e = eind.getTimestamp();
                         int afstand = ca.AskInfo(begin.getId()).getSegment().getDistance();
                         float millis = (b.until(e, ChronoUnit.MILLIS));
-                        float speed = ((float) afstand/1000) / (float) (millis / 3600000);
+                        float speed = ((float) afstand/1000) / (millis / 360000);
                         if (speed > max_snelheid) {
-
+                            /* maak boete */
+                            bufferedMessages.removeAll(bufferedMessages.stream().filter(x -> x.getLicensePlate().equals(s)).collect(Collectors.toList()));
                             System.out.println(speed);
                             System.out.println(s + " heeft een boete voor te snel rijden.");
                         }
                     }
-                }
-
-                List<CameraMessage> matchedMessages =  bufferedMessages.stream().filter((x) -> x.getTimestamp().until(LocalDateTime.now(),ChronoUnit.MILLIS) > delay).collect(Collectors.toList());
-                for (CameraMessage matchedMessage : matchedMessages) {
-                    bufferedMessages.remove(matchedMessage);
                 }
 
 

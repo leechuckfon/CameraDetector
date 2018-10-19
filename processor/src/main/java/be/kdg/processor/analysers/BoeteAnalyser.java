@@ -26,9 +26,6 @@ public class BoeteAnalyser {
         so.handleMessage(m);
 
         } catch (CameraNotFoundException | LicensePlateNotFoundException e) {
-//            if (e.getClass() == IOException.class) {
-//                LOGGER.warn("IOException gebeurd tijdens het checken van overtredingen");
-//            }
             if (e.getClass() == CameraNotFoundException.class) {
                 LOGGER.warn("Camera niet gevonden");
             }
