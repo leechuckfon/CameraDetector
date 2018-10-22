@@ -21,13 +21,13 @@ public class CameraAdapter {
     }
 
     public Camera AskInfo(int id) throws IOException, CameraNotFoundException{
-        Camera a;
+        Camera camera;
         try {
                 ObjectMapper obj = new ObjectMapper();
-                a = obj.readValue(cameraProxy.get(id), Camera.class);
+                camera = obj.readValue(cameraProxy.get(id), Camera.class);
         } catch (IOException | CameraNotFoundException e) {
             throw(e);
         }
-        return a;
+        return camera;
     }
 }

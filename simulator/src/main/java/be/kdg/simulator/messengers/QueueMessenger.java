@@ -7,6 +7,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+/**
+ * De QueueMessenger is verantwoordelijk voor het posten van CameraMessages op de RabbitMQ queue.
+ */
 @Component
 @ConditionalOnProperty(name = "messenger.type", havingValue = "queue")
 public class QueueMessenger implements Messenger {

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 /**
- * Klasse MessageReceiver haalt messages af van de queue
+ * Klasse MessageReceiver haalt messages af van de queue en deze doordelegeren naar de BoeteAnalyser die zal checken of de CameraMessage voor een Overtreding zorgt.
  */
 
 @Component

@@ -7,6 +7,9 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * De QueueConfig zijn de queue configuraties van de RabbitMQ queue.
+ */
 @Configuration
 public class QueueConfig {
 

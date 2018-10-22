@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import java.io.IOException;
 
 /**
- * De CameraDeserializer zal
+ * De CameraDeserializer zal een Camera object maken van de JSON die wordt teruggegeven door de CameraService
  */
 public class CameraDeserializer extends JsonDeserializer<Camera> {
     @Override

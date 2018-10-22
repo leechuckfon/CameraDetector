@@ -73,11 +73,4 @@ public class BoeteRestController {
         ListBoeteDTO boetelijst = new ListBoeteDTO(gefilterd);
         return new ResponseEntity<>(boetelijst,HttpStatus.OK);
     }
-
-//    @PostMapping("/boetes")
-//    public ResponseEntity<BoeteDTO> createBoete(@RequestBody BoeteDTO boeteDTO) {
-//        Boete mappedBoete = modelMapper.map(boeteDTO, Boete.class);
-//        Boete boeteResponse = boeteService.saveBoete(mappedBoete);
-//        return new ResponseEntity<>(modelMapper.map(boeteResponse, BoeteDTO.class), HttpStatus.CREATED);
-//    }
 }

@@ -7,6 +7,11 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * Een Boete Object bestaat uit een id, een BoeteType, een bedrag dat moet betaald worden, de cameraId waardat het wordt geregistreerd
+ * de tijd van de overtreding, info over de overtreding (voor een snelheidsovertreding zal die zijn hoe snel bestuurder reed en hoe snel er maximaal gereden mag worden)
+ * of de boete is goedgekeurd en de mortivering in geval van het veranderen van het boetebedrag.
+ */
 @Data
 @Entity
 @AllArgsConstructor

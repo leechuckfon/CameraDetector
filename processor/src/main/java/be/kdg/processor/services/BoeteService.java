@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Functioneert als een tussenklasse tussen de Controllers/calculcators en de Repository.
+ */
 @Service
 @Transactional
 public class BoeteService {

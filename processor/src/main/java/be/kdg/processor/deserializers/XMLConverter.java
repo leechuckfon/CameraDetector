@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * De XMLConverter zal de inkomende message van XML naar een CameraMessage object mappen.
+ */
 @Component
 public class XMLConverter implements org.springframework.amqp.support.converter.MessageConverter {
     private static final Logger LOGGER = LoggerFactory.getLogger(XMLConverter.class);
@@ -34,3 +37,4 @@ public class XMLConverter implements org.springframework.amqp.support.converter.
         return cm;
     }
 }
+

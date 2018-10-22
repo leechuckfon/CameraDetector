@@ -13,7 +13,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * De Filegenerator zal een file lezen daarvan CameraMessages maken en teruggeven.
+ */
 @Component
 @ConditionalOnProperty(name = "generator.type", havingValue = "file")
 public class FileGenerator implements MessageGenerator{

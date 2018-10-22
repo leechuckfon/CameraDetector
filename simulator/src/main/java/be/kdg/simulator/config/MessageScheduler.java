@@ -13,6 +13,10 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+/**
+ * De MessageScheduler is de klasse die zal zorgen voor het periodiek posten van de message op de queue
+ */
 @Component
 public class MessageScheduler {
 

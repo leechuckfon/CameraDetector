@@ -7,6 +7,9 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+/**
+ * De DeserializeLocalDateTime klasse zal de LocalDateTime helpen deserializen van ene inkomende message
+ */
 public class DeserializeLocalDateTime extends JsonDeserializer<LocalDateTime> {
     @Override
     public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {

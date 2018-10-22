@@ -21,14 +21,14 @@ public class LicensePlateAdapter {
     }
 
     public LicensePlateInfo askInfo(String plate) throws IOException, LicensePlateNotFoundException {
-        LicensePlateInfo a;
+        LicensePlateInfo lincensePlateInfo;
 
         try {
             ObjectMapper obj = new ObjectMapper();
-            a = obj.readValue(lps.get(plate), LicensePlateInfo.class);
+            lincensePlateInfo = obj.readValue(lps.get(plate), LicensePlateInfo.class);
         } catch (IOException | LicensePlateNotFoundException e) {
            throw(e);
         }
-        return a;
+        return lincensePlateInfo;
     }
 }

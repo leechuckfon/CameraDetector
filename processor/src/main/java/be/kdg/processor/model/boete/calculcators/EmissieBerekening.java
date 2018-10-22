@@ -1,4 +1,4 @@
-package be.kdg.processor.model.boete.Calculators;
+package be.kdg.processor.model.boete.calculcators;
 
 import be.kdg.processor.model.boete.BoeteTypes;
 import be.kdg.processor.model.boete.Boete;
@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
+/**
+ * EmissieBerekening zal een (emissie)boete aanmaken en deze opslagen in de BoeteRepository aan de hand van de BoeteService
+ */
 @Component
 public class EmissieBerekening implements BoeteBerekening {
     private final BoeteService boeteService;

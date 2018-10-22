@@ -4,6 +4,9 @@ import be.kdg.simulator.model.CameraMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
+/**
+ * De CommandlineMessenger is verantwoordelijk om CameraMessages te posten op de commandline.
+ */
 @Component
 //oplossen met
 // a) @Qualifier

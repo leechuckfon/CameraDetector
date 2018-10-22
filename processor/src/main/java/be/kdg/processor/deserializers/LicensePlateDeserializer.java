@@ -8,6 +8,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import java.io.IOException;
 
+/**
+ * LicensePlateDeserializer zal een LicensePlateInfo object maken van de JSON die wordt teruggegeven van de LicensePlateService
+ */
 public class LicensePlateDeserializer extends JsonDeserializer<LicensePlateInfo> {
     @Override
     public LicensePlateInfo deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {

@@ -3,7 +3,7 @@ package be.kdg.processor.overtredingen;
 import be.kdg.processor.adapters.CameraAdapter;
 import be.kdg.processor.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
-import be.kdg.processor.model.boete.Calculators.EmissieBerekening;
+import be.kdg.processor.model.boete.calculcators.EmissieBerekening;
 import be.kdg.processor.model.camera.Camera;
 import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.processor.services.BoeteService;
@@ -22,6 +22,14 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
+
+/**
+ * De EmissieOvertreding klasse checkt bij elke message die binnenkomt of de camera die de auto heeft gepasseerd een hoger Euronorm nummer heeft dan de auto, als dit zo is
+ * dan zal de klasse de emissieBerekening vragen om een boete te berekenen. De Camera's die worden opgevraagd worden gecached. De Cameras en de LicensePlateInfos worden opgevraagd aan de externe Services.
+ *
+ * Als de CameraMessage een Exception teruggeeft zal hij worden gecacht en om de minuut geherprobeert tot 3 keren max, als dit nog steeds niet lukt zal deze worden verwijderd.
+ */
+
 
 @Component
 public class EmissieOvertreding implements Overtreding {
@@ -82,8 +90,7 @@ public class EmissieOvertreding implements Overtreding {
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
             if (e.getClass() == IOException.class) {
                 LOGGER.warn("IOException gebeurd tijdens het checken van overtredingen");
-                //cache bestand voor latere check
-                
+
             }
             if (e.getClass() == CameraNotFoundException.class) {
                 LOGGER.warn("Camera niet gevonden");

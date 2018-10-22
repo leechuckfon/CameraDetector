@@ -8,6 +8,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Random;
 
+/**
+ * De RandomMessageGenerator klasse zal random CameraMessages aanmaken en teruggeven.
+ */
 @Component()
 @ConditionalOnProperty(name ="generator.type", havingValue = "random")
 public class RandomMessageGenerator implements MessageGenerator{
