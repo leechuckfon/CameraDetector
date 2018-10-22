@@ -30,7 +30,7 @@ public class BoeteRestController {
         this.modelMapper = modelMapper;
     }
 
-    @GetMapping("/boete/getall")
+    @GetMapping("/boetes")
     public ResponseEntity<ListBoeteDTO> loadAll() throws BoeteException {
         List<Boete> boete = boeteService.loadAll();
         ListBoeteDTO listBoeteDTO = new ListBoeteDTO(boete);
