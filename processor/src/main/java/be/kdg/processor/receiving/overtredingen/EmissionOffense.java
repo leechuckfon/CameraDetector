@@ -13,6 +13,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +31,6 @@ import java.util.stream.Collectors;
  * then the class will ask the EmissionCalculator to make a Fine object.
  *
  * If the CameraMessage gives back an exception then this will be further thrown to the FineAnalyser object.
- * (Will also cache the CameraMessage Objects which couldn't get processed if this line is not removed yet).
  */
 
 
@@ -44,22 +46,21 @@ public class EmissionOffense implements Offense {
     private long emissionTime;
     private final EmissionCalculator emissionCalculator;
     private int finefactor;
-    private ConcurrentHashMap<CameraMessage,Integer> cachedMessages;
-    private List<Camera> askedCameras;
 
     public EmissionOffense(@Value("${emissionTime}") long emissionTime, FineService fineService, @Value("${finefactor.emissionfinefactor}") int finefactor, EmissionCalculator emissionCalculator) {
         this.criminals = new ConcurrentHashMap<>();
         this.emissionTime = emissionTime;
         this.finefactor = finefactor;
         this.emissionCalculator = emissionCalculator;
-        cachedMessages = new ConcurrentHashMap<>();
-        askedCameras = new ArrayList<>();
-        ca = new CameraAdapter();
-        lps = new LicensePlateAdapter();
     }
 
 
     @Override
+    @Retryable(
+            maxAttempts = 3,
+            backoff = @Backoff(delay = 1000),
+            value ={IOException.class,CameraNotFoundException.class,LicensePlateNotFoundException.class}
+    )
     public void handleMessage(CameraMessage m) throws IOException {
         try {
 
@@ -83,20 +84,17 @@ public class EmissionOffense implements Offense {
             }
 
         } catch (IOException | CameraNotFoundException | LicensePlateNotFoundException e) {
-            if (!cachedMessages.containsKey(m)) {
-                cacheMessage(m);
-            } else {
-                cachedMessages.replace(m, cachedMessages.get(m) + 1);
-                System.out.println(cachedMessages);
-                if (cachedMessages.get(m) >= 3) {
-                    cachedMessages.remove(m);
-                }
-            }
             throw(e);
         }
     }
+
+    @Recover
+    public void printException(Exception e) {
+        LOGGER.error(e.getMessage());
+    }
+
     @Scheduled(fixedDelay = 60000L)
-    private void deleteDetections(){
+    public void deleteDetections(){
         for (String s : criminals.keySet()) {
             LocalDateTime ldt = criminals.get(s);
             Long timeSinceOffense = ldt.until(LocalDateTime.now(),ChronoUnit.SECONDS);
@@ -104,21 +102,5 @@ public class EmissionOffense implements Offense {
                 criminals.remove(s);
             }
         }
-    }
-    @Scheduled(fixedDelay = 60000L)
-    private void retryMessage() {
-        for (CameraMessage cameraMessage : cachedMessages.keySet()) {
-            if (cameraMessage != null) {
-                try {
-                    handleMessage(cameraMessage);
-                } catch (IOException e) {
-                    LOGGER.error("Error has occurred while retrying the message");
-                }
-            }
-        }
-    }
-
-    private void cacheMessage(CameraMessage m) {
-        cachedMessages.put(m,0);
     }
 }

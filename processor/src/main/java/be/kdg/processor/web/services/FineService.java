@@ -11,7 +11,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * Functioneert als een tussenklasse tussen de Controllers/calculcators en de Repository.
  * Is a class that stand between the controllers/calculators and the repository
  */
 @Service

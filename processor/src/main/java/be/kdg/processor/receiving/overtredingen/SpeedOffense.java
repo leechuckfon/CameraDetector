@@ -3,13 +3,19 @@ package be.kdg.processor.receiving.overtredingen;
 import be.kdg.processor.receiving.adapters.CameraAdapter;
 import be.kdg.processor.receiving.adapters.LicensePlateAdapter;
 import be.kdg.processor.model.CameraMessage;
+import be.kdg.sa.services.CameraNotFoundException;
+import be.kdg.sa.services.LicensePlateNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.retry.annotation.Backoff;
+import org.springframework.retry.annotation.Recover;
+import org.springframework.retry.annotation.Retryable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -27,27 +33,38 @@ import java.util.stream.Collectors;
 @Component
 public class SpeedOffense {
 
-    private final CameraAdapter ca;
-    private final LicensePlateAdapter lps;
+    @Autowired
+    private CameraAdapter ca;
+    @Autowired
+    private LicensePlateAdapter lps;
+
     private static final Logger LOGGER = LoggerFactory.getLogger(SpeedOffense.class);
     private List<CameraMessage> bufferedMessages = new ArrayList<>();
-    private Map<String,List<CameraMessage>> beginningEnd;
     private final long delay;
 
 
     @Autowired
-    public SpeedOffense(@Value("${timeframeSnelheid}") long delay, CameraAdapter ca, LicensePlateAdapter lps) {
+    public SpeedOffense(@Value("${timeframeSnelheid}") long delay) {
         this.delay = delay;
-        this.ca = ca;
-        this.lps = lps;
+
     }
 
     //buffer de messages
+    @Retryable(
+            maxAttempts = 3,
+            backoff = @Backoff(delay = 1000),
+            value ={IOException.class, CameraNotFoundException.class, LicensePlateNotFoundException.class}
+    )
     public void handleMessage(CameraMessage m) throws Exception {
         if (m != null) {
             bufferedMessages.add(m);
         }
         checkOffense();
+    }
+
+    @Recover
+    public void printException(Exception e) {
+        LOGGER.error(e.getMessage());
     }
 
     @Scheduled(fixedDelay = 60000L)
@@ -59,7 +76,7 @@ public class SpeedOffense {
     }
 
     private void checkOffense() throws Exception {
-        beginningEnd = new HashMap<>();
+        Map<String, List<CameraMessage>> beginningEnd = new HashMap<>();
         for (CameraMessage bufferedMessage : bufferedMessages) {
             if(!(beginningEnd.containsKey(bufferedMessage.getLicensePlate()))){
                 beginningEnd.put(bufferedMessage.getLicensePlate(),new ArrayList<>());

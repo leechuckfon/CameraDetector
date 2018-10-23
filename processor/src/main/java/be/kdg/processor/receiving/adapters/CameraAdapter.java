@@ -23,12 +23,12 @@ public class CameraAdapter {
 
     @Cacheable("Cameras")
     public Camera AskInfo(int id) throws IOException, CameraNotFoundException{
-        Camera camera;
+        Camera camera=null;
         try {
                 ObjectMapper obj = new ObjectMapper();
                 camera = obj.readValue(cameraProxy.get(id), Camera.class);
         } catch (IOException | CameraNotFoundException e) {
-            throw(e);
+            throw (e);
         }
         return camera;
     }
