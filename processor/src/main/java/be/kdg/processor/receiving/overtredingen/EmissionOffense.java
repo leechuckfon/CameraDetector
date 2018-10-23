@@ -59,13 +59,12 @@ public class EmissionOffense implements Offense {
 
     @Override
     @Retryable(
-            maxAttempts = 3,
+            maxAttemptsExpression = "#{${maxretries}}",
             backoff = @Backoff(delayExpression = "${retrydelay}"),
             value ={IOException.class,CameraNotFoundException.class,LicensePlateNotFoundException.class}
     )
     public void handleMessage(CameraMessage m) throws IOException {
         try {
-
             Camera emission = ca.AskInfo(m.getId());
             LicensePlateInfo perp = lps.askInfo(m.getLicensePlate());
 
@@ -77,8 +76,8 @@ public class EmissionOffense implements Offense {
 
                     LOGGER.info("auto: " + perp.getPlateId() + " has an emissionOffense.");
                 } else {
-                    LocalDateTime laatsteKeer = criminals.get(perp.getPlateId());
-                    if (laatsteKeer.until(m.getTimestamp(), ChronoUnit.SECONDS) > emissionTime) {
+                    LocalDateTime lastTime = criminals.get(perp.getPlateId());
+                    if (lastTime.until(m.getTimestamp(), ChronoUnit.SECONDS) > emissionTime) {
                         criminals.replace(perp.getPlateId(), m.getTimestamp());
                         LOGGER.info("auto: " + perp.getPlateId() + " has another emissionOffense.");
                     }
