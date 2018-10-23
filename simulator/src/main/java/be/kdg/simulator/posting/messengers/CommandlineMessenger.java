@@ -1,4 +1,4 @@
-package be.kdg.simulator.messengers;
+package be.kdg.simulator.posting.messengers;
 
 import be.kdg.simulator.model.CameraMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

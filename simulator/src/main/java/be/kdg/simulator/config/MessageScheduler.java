@@ -1,7 +1,7 @@
 package be.kdg.simulator.config;
 
 import be.kdg.simulator.generators.MessageGenerator;
-import be.kdg.simulator.messengers.Messenger;
+import be.kdg.simulator.posting.messengers.Messenger;
 import be.kdg.simulator.model.CameraMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

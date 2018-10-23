@@ -1,4 +1,4 @@
-package be.kdg.simulator.messengers;
+package be.kdg.simulator.posting.messengers;
 
 import be.kdg.simulator.generators.MessageGenerator;
 import org.junit.Test;

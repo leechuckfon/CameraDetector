@@ -1,6 +1,6 @@
-package be.kdg.simulator.messengers;
+package be.kdg.simulator.posting.messengers;
 
-import be.kdg.simulator.serializers.XMLConverter;
+import be.kdg.simulator.posting.serializers.XMLConverter;
 import be.kdg.simulator.generators.MessageGenerator;
 import be.kdg.simulator.model.CameraMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;

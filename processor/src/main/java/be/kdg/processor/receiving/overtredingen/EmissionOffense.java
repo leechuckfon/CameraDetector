@@ -46,19 +46,21 @@ public class EmissionOffense implements Offense {
     private long emissionTime;
     private final EmissionCalculator emissionCalculator;
     private int finefactor;
+    private final long privateDelay;
 
-    public EmissionOffense(@Value("${emissionTime}") long emissionTime, FineService fineService, @Value("${finefactor.emissionfinefactor}") int finefactor, EmissionCalculator emissionCalculator) {
+    public EmissionOffense(@Value("${emissionTime}") long emissionTime, FineService fineService, @Value("${finefactor.emissionfinefactor}") int finefactor, EmissionCalculator emissionCalculator,@Value("${retrydelay}") long retrydelay) {
         this.criminals = new ConcurrentHashMap<>();
         this.emissionTime = emissionTime;
         this.finefactor = finefactor;
         this.emissionCalculator = emissionCalculator;
+        this.privateDelay = retrydelay;
     }
 
 
     @Override
     @Retryable(
             maxAttempts = 3,
-            backoff = @Backoff(delay = 1000),
+            backoff = @Backoff(delayExpression = "${retrydelay}"),
             value ={IOException.class,CameraNotFoundException.class,LicensePlateNotFoundException.class}
     )
     public void handleMessage(CameraMessage m) throws IOException {
