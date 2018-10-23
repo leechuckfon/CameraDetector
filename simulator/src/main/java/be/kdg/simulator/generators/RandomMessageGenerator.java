@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Random;
 
 /**
- * De RandomMessageGenerator klasse zal random CameraMessages aanmaken en teruggeven.
+ * The RandomMessageGenerator will generate random CameraMessages.
  */
 @Component()
 @ConditionalOnProperty(name ="generator.type", havingValue = "random")

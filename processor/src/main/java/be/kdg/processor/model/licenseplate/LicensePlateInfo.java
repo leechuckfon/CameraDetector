@@ -1,6 +1,6 @@
 package be.kdg.processor.model.licenseplate;
 
-import be.kdg.processor.deserializers.LicensePlateDeserializer;
+import be.kdg.processor.receiving.deserializers.LicensePlateDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = LicensePlateDeserializer.class)

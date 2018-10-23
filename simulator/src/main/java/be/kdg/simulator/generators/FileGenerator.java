@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * De Filegenerator zal een file lezen daarvan CameraMessages maken en teruggeven.
+ * The FileGenerator will read a file and generate CameraMessages
  */
 @Component
 @ConditionalOnProperty(name = "generator.type", havingValue = "file")

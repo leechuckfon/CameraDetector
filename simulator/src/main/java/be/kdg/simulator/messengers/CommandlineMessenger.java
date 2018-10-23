@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 /**
- * De CommandlineMessenger is verantwoordelijk om CameraMessages te posten op de commandline.
+ * The CommandlineMessager is responsible for the posting of CameraMessages on the commandline
  */
 @Component
 //oplossen met

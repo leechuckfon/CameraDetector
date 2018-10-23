@@ -1,6 +1,6 @@
 package be.kdg.processor;
 
-import be.kdg.processor.overtredingen.EmissieOvertreding;
+import be.kdg.processor.receiving.overtredingen.EmissionOffense;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.CameraServiceProxy;
@@ -28,7 +28,7 @@ public class ProcessorApplicationTests {
     private CameraServiceProxy csp = new CameraServiceProxy();
     private static final Logger LOGGER = LoggerFactory.getLogger(ProcessorApplicationTests.class);
     @Autowired
-    private EmissieOvertreding emissieOvertreding;
+    private EmissionOffense emissionOffense;
     @Autowired
     private MockMvc mockMvc;
 
@@ -49,13 +49,9 @@ public class ProcessorApplicationTests {
     }
 
     @Test
-    public void emissieDetectieTest() {
-       emissieOvertreding.handleMessage(new CameraMessage(3,"1-ABC-123", LocalDateTime.now()));
-        try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/boete/getall")).andDo(print());
-        } catch (Exception e) {
-            LOGGER.error("Geen boetes gevonden");
-        }
+    public void emissieDetectieTest() throws Exception {
+       emissionOffense.handleMessage(new CameraMessage(3,"1-ABC-123", LocalDateTime.now()));
+       mockMvc.perform(MockMvcRequestBuilders.get("/api/fine/getall")).andDo(print());
     }
 
 }

@@ -1,6 +1,6 @@
 package be.kdg.processor.model;
 
-import be.kdg.processor.deserializers.DeserializeLocalDateTime;
+import be.kdg.processor.receiving.deserializers.DeserializeLocalDateTime;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 import java.time.LocalDateTime;
@@ -39,7 +39,7 @@ public class CameraMessage {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss:SSS");
-        return String.format("ID: %d, Nummerplaat: %s, Timestamp: %s",getId(),getLicensePlate(),getTimestamp().format(formatter));
+        return String.format("ID: %d, LicensePlate: %s, Timestamp: %s",getId(),getLicensePlate(),getTimestamp().format(formatter));
     }
 
     @Override

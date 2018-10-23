@@ -3,7 +3,7 @@ package be.kdg.simulator.messengers;
 import be.kdg.simulator.model.CameraMessage;
 
 /**
- * De Messenger klasse is de interface voor verschillende messenging manieren (als er een nieuwe manier van messages zenden is moet dit geïmplementeerd worden)
+ * The Messenger class is the interface that has to be implemented for each way you can send a message from the Simulator to the Processor.
  */
 public interface Messenger {
 

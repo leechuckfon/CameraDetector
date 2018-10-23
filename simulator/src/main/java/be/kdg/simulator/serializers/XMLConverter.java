@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
- * De XMLConverter zorgt voor het omzetten van CameraMessage naar XML vorm om deze later op de RabbitMQ queue te posten.
+ * The XML Converter will make sure that the CameraMessage is turned into XML when this is sent to the MessageQueue
  */
 @Component
 public class XMLConverter implements org.springframework.amqp.support.converter.MessageConverter {

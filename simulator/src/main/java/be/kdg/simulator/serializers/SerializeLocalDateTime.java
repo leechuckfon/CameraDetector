@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
- * De SerializeLocalDateTime klasse helpt de LocalDateTime van de CameraMessage klasse te serializeren voor XML conversie en het posten naar de RabbitMQ queue.
+ * The SerializeLocalDateTime will help the conversion from LocalDateTime to it's XML format.
  */
 public class SerializeLocalDateTime extends JsonSerializer<LocalDateTime> {
     @Override

@@ -1,7 +1,7 @@
 package be.kdg.processor.model.camera;
 
 
-import be.kdg.processor.deserializers.CameraDeserializer;
+import be.kdg.processor.receiving.deserializers.CameraDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 @JsonDeserialize(using = CameraDeserializer.class)
 public class Camera {

@@ -4,7 +4,7 @@ import be.kdg.simulator.model.CameraMessage;
 import org.springframework.stereotype.Component;
 
 /**
- * MessageGenerator is de interface voor verschillende Generator klassen (als er een nieuwe manier is om messages te genereren zal dit geïmplementeerd moeten worden)
+ * MessageGenerator is the interface which needs to be implemented for each way that there is to generate a message
  */
 @Component
 public interface MessageGenerator {

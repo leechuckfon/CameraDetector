@@ -15,7 +15,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- * De MessageScheduler is de klasse die zal zorgen voor het periodiek posten van de message op de queue
+ * The MessageScheduler is the class that will make sure for the periodic posting of messages on the RabbitMQ
  */
 @Component
 public class MessageScheduler {

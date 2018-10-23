@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * De QueueConfig zijn de queue configuraties van de RabbitMQ queue.
+ * The QueueConfig is the configuration file of the RabbitMQ queue.
  */
 @Configuration
 public class QueueConfig {

@@ -1,8 +1,8 @@
 package be.kdg.processor;
 
-import be.kdg.processor.model.boete.BoeteTypes;
-import be.kdg.processor.model.boete.Boete;
-import be.kdg.processor.services.BoeteService;
+import be.kdg.processor.model.fine.FineType;
+import be.kdg.processor.model.fine.Fine;
+import be.kdg.processor.web.services.FineService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -31,27 +31,20 @@ public class RestWebTests {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private BoeteService boeteService;
+    private FineService fineService;
 
     @Test
-    public void restTest() {
-        boeteService.saveBoete(new Boete(BoeteTypes.EMISSIE,1000,1,"restTest", LocalDateTime.now()));
-        try {
-            mockMvc.perform(put("/api/boetegoedkeuring/1")).andExpect(status().isAccepted()).andDo(print()).andExpect(content().string(containsString("\"goedgekeurd\":true")));
-        } catch (Exception e) {
-            LOGGER.error("restTest gaf een error");
-        }
+    public void restTest() throws Exception {
+        fineService.saveFine(new Fine(FineType.EMISSION,1000,1,"restTest", LocalDateTime.now()));
+        mockMvc.perform(put("/api/approveFine/1")).andExpect(status().isAccepted()).andDo(print()).andExpect(content().string(containsString("\"approved\":true")));
+
     }
 
     @Test
-    public void mvcTest() {
-        try {
-            mockMvc.perform(get("/web/boetefactoren"))
+    public void mvcTest() throws Exception {
+            mockMvc.perform(get("/web/finefactors"))
                     .andExpect(status().isOk())
                     .andExpect(view().name("showboetefactoren"));
-        } catch (Exception e) {
-            LOGGER.error("MVCTest gaf een error");
-        }
     }
 
 }

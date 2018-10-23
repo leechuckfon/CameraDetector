@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 /**
- * De QueueMessenger is verantwoordelijk voor het posten van CameraMessages op de RabbitMQ queue.
+ * The QueueMessenger is responsible for the posting of the CameraMessages to the RabbitMQ queue in XML format.
  */
 @Component
 @ConditionalOnProperty(name = "messenger.type", havingValue = "queue")

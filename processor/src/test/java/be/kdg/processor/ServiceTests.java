@@ -1,8 +1,8 @@
 package be.kdg.processor;
 
-import be.kdg.processor.model.boete.BoeteTypes;
-import be.kdg.processor.model.boete.Boete;
-import be.kdg.processor.services.BoeteService;
+import be.kdg.processor.model.fine.FineType;
+import be.kdg.processor.model.fine.Fine;
+import be.kdg.processor.web.services.FineService;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Test;
@@ -26,7 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ServiceTests {
     @Autowired
-    private BoeteService boeteService;
+    private FineService fineService;
     @Autowired
     private MockMvc mockMvc;
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceTests.class);
@@ -34,9 +34,9 @@ public class ServiceTests {
 
     @Test
     public void serviceTest() {
-        Assert.assertNotNull(boeteService.saveBoete(new Boete(BoeteTypes.EMISSIE,50,1,"OvertredingTest", LocalDateTime.now())));
+        Assert.assertNotNull(fineService.saveFine(new Fine(FineType.EMISSION,50,1,"OvertredingTest", LocalDateTime.now())));
         try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/boete/getall")).andDo(print()).andExpect(content().string(Matchers.containsString("OvertredingTest")));
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/fine/getall")).andDo(print()).andExpect(content().string(Matchers.containsString("OvertredingTest")));
         } catch (Exception e) {
             LOGGER.error("Geen boetes gevonden");
         }
