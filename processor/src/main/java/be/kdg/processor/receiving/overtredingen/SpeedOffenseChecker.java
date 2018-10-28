@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
-import org.springframework.retry.RetryPolicy;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
@@ -58,10 +57,10 @@ public class SpeedOffenseChecker implements ApplicationListener<PropertiesChange
         }
 
         RetryTemplate rt = new RetryTemplate();
-        RetryPolicy retryPolicy = new SimpleRetryPolicy();
-        ((SimpleRetryPolicy) retryPolicy).setMaxAttempts(propertiesConfig.getMaxretries());
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(propertiesConfig.getMaxretries());
         FixedBackOffPolicy bop = new FixedBackOffPolicy();
-        ((FixedBackOffPolicy) bop).setBackOffPeriod(propertiesConfig.getRetrydelay());
+        bop.setBackOffPeriod(propertiesConfig.getRetrydelay());
         rt.setRetryPolicy(retryPolicy);
         rt.setBackOffPolicy(bop);
         rt.setThrowLastExceptionOnExhausted(true);
@@ -104,7 +103,7 @@ public class SpeedOffenseChecker implements ApplicationListener<PropertiesChange
                 if (speed > max_snelheid) {
                     /* maak fine */
                     LOGGER.info(begin.getLicensePlate() + " heeft een snelheidsboete.");
-                    speedCalculator.calculateFine(propertiesConfig.getSpeedfinefactor(), eind.getId(), Math.round(speed), max_snelheid, eind.getTimestamp());
+                    speedCalculator.calculateFine(propertiesConfig.getSpeedfinefactor(), eind.getId(), Math.round(speed), max_snelheid, eind.getTimestamp(),begin.getLicensePlate());
                     bufferedMessages.removeAll(bufferedMessages.stream().filter(x -> x.getLicensePlate().equals(s)).collect(Collectors.toList()));
                 }
             }

@@ -7,7 +7,6 @@ import be.kdg.processor.web.dto.FineFactorsDTO;
 import be.kdg.processor.web.publishers.PropertiesChangePublisher;
 import be.kdg.processor.web.services.FineService;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,7 +36,7 @@ public class FineWebController implements ApplicationListener<PropertiesChangeEv
     }
 
     @GetMapping("/finefactors")
-    public ModelAndView showFinefactors(@Value("${receive.emissionfinefactor}") int emissiestring, @Value("${receive.speedfinefactor}") int snelheidstring){
+    public ModelAndView showFinefactors(){
         return new ModelAndView("showboetefactoren","boetefactoren",new FineFactorsDTO(propertiesConfig.getEmissionfinefactor(),propertiesConfig.getSpeedfinefactor()));
 
     }
@@ -49,10 +48,20 @@ public class FineWebController implements ApplicationListener<PropertiesChangeEv
 
     @PostMapping("/changeFineFactors.do")
     public ModelAndView fineFactorFormDO(FineFactorChangeDTO fineFactorChangeDTO){
-        propertiesConfig.setEmissionfinefactor(fineFactorChangeDTO.getEmissionFactor());
-        propertiesConfig.setSpeedfinefactor(fineFactorChangeDTO.getSpeedFactor());
+        propertiesConfig.setEmissionfinefactor(fineFactorChangeDTO.getEmissionfinefactor());
+        propertiesConfig.setSpeedfinefactor(fineFactorChangeDTO.getSpeedfinefactor());
+        propertiesConfig.setTimeframeSnelheid(fineFactorChangeDTO.getTimeframeSnelheid());
+        propertiesConfig.setEmissionTime(fineFactorChangeDTO.getEmissionTime());
+        propertiesConfig.setMaxretries(fineFactorChangeDTO.getMaxretries());
+        propertiesConfig.setRetrydelay(fineFactorChangeDTO.getRetrydelay());
         publisher.doStuffAndPublishAnEvent(propertiesConfig);
-        return new ModelAndView("showboetefactoren","boetefactoren", new FineFactorsDTO(fineFactorChangeDTO.getEmissionFactor(),fineFactorChangeDTO.getSpeedFactor()));
+        return new ModelAndView("showproperties","propertiesModel", modelMapper.map(propertiesConfig,FineFactorChangeDTO.class));
+    }
+
+    @GetMapping("/showProperties")
+    public ModelAndView showProperties(){
+        FineFactorChangeDTO properties = modelMapper.map(propertiesConfig, FineFactorChangeDTO.class);
+        return new ModelAndView("showproperties","propertiesModel", properties );
     }
 
     @Override

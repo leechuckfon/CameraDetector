@@ -35,7 +35,7 @@ public class RestWebTests {
 
     @Test
     public void restTest() throws Exception {
-        fineService.saveFine(new Fine(FineType.EMISSION,1000,1,"restTest", LocalDateTime.now()));
+        fineService.saveFine(new Fine(FineType.EMISSION,1000,1,"restTest", LocalDateTime.now(),"2-ABV-357"));
         mockMvc.perform(put("/api/approvefine/1")).andExpect(status().isAccepted()).andDo(print()).andExpect(content().string(containsString("\"approved\":true")));
 
     }

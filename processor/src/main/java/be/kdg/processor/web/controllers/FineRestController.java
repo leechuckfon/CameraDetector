@@ -10,7 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
+
 import java.util.List;
 
 /**
@@ -19,7 +19,6 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api")
-@RefreshScope
 public class FineRestController {
     private final FineService fineService;
     private final ModelMapper modelMapper;

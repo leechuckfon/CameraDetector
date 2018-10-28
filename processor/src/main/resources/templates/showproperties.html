@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table class="table">
+    <tr>
+        <td>SpeedFineFactor : </td>
+        <td th:text="${propertiesModel.speedfinefactor}">$</td>
+    </tr>
+    <tr>
+        <td>EmissionFineFactor : </td>
+        <td th:text="${propertiesModel.emissionfinefactor}">$</td>
+    </tr>
+    <tr>
+        <td>Time between emission fines : </td>
+        <td th:text="${propertiesModel.emissionTime}">$ millis</td>
+    </tr>
+    <tr>
+        <td>Time for buffered messages (SpeedFine) : </td>
+        <td th:text="${propertiesModel.timeframeSnelheid}">$ millis</td>
+    </tr>
+    <tr>
+        <td>Time between retries : </td>
+        <td th:text="${propertiesModel.retrydelay}">$ millis</td>
+    </tr>
+    <tr>
+        <td>Max amount of retries before giving up : </td>
+        <td th:text="${propertiesModel.maxretries}">$ retries</td>
+    </tr>
+</table>
+</body>
+</html>

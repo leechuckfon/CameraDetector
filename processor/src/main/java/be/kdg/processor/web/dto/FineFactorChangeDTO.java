@@ -11,7 +11,14 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class FineFactorChangeDTO {
     @NotEmpty
-    private int emissionFactor;
+    private int emissionfinefactor;
     @NotEmpty
-    private int speedFactor;
-}
+    private int speedfinefactor;
+    @NotEmpty
+    private long emissionTime;
+    @NotEmpty
+    private long timeframeSnelheid;
+    @NotEmpty
+    private long retrydelay;
+    @NotEmpty
+    private int maxretries;}

@@ -19,9 +19,7 @@ public class EmissionCalculator implements FineCalculator {
     }
 
     @Override
-    public void calculateFine(int finefactor, int cameraId, int offenseNumber, int maxAllowed, LocalDateTime offenseTime) {
-
-
-        fineService.saveFine(new Fine(FineType.EMISSION,finefactor,cameraId,String.format("De auto has euronorm %d en het minimum van het segent was %d",offenseNumber,maxAllowed),offenseTime));
+    public void calculateFine(int finefactor, int cameraId, int offenseNumber, int maxAllowed, LocalDateTime offenseTime,String licenseplate) {
+        fineService.saveFine(new Fine(FineType.EMISSION,finefactor,cameraId,String.format("De auto has euronorm %d en het minimum van het segent was %d",offenseNumber,maxAllowed),offenseTime,licenseplate));
     }
 }

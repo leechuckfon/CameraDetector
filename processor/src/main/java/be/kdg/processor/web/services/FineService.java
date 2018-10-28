@@ -1,5 +1,6 @@
 package be.kdg.processor.web.services;
 
+import be.kdg.processor.model.CameraMessage;
 import be.kdg.processor.model.fine.Fine;
 import be.kdg.processor.web.dto.FineChangeDTO;
 import be.kdg.processor.web.repos.FineRepo;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,8 +53,12 @@ public class FineService {
         LocalDate startOfSearch = LocalDate.parse(beginSearch,dtf);
         LocalDate endOfSearch = LocalDate.parse(eindSearch,dtf);
         List<Fine> alleFines = fineRepo.findAll();
-        List<Fine> gefilterdeFines = alleFines.stream().filter(x -> x.getOffenseTime().isBefore(endOfSearch.atStartOfDay()) && x.getOffenseTime().isAfter(startOfSearch.atStartOfDay())).collect(Collectors.toList());
-        return gefilterdeFines;
+        return alleFines.stream().filter(x -> x.getOffenseTime().isBefore(endOfSearch.atStartOfDay()) && x.getOffenseTime().isAfter(startOfSearch.atStartOfDay())).collect(Collectors.toList());
+    }
+
+    public Optional<Fine> checkfordoubles(CameraMessage cm , long timeframe) {
+        List<Fine> alleFines = fineRepo.findAll();
+        return alleFines.stream().filter(x -> x.getLicenseplate().equals(cm.getLicensePlate()) && x.getOffenseTime().until(cm.getTimestamp(), ChronoUnit.MILLIS) < timeframe).findFirst();
     }
 
     public Fine approveFine(Fine unapprovedfine) {

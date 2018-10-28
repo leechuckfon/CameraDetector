@@ -35,7 +35,7 @@ public class ServiceTests {
     @Test
     public void serviceTest() {
         /* verander naar de calculator */
-        Assert.assertNotNull(fineService.saveFine(new Fine(FineType.EMISSION,50,1,"OvertredingTest", LocalDateTime.now())));
+        Assert.assertNotNull(fineService.saveFine(new Fine(FineType.EMISSION,50,1,"OvertredingTest", LocalDateTime.now(),"1-AME-123")));
         try {
             mockMvc.perform(MockMvcRequestBuilders.get("/api/fine/getall")).andDo(print()).andExpect(content().string(Matchers.containsString("OvertredingTest")));
         } catch (Exception e) {

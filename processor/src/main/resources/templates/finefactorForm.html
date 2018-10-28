@@ -17,8 +17,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"><h5>Please, create a new greeting</h5>
-                    <small>It's free and always will be.</small>
+                <div class="panel-heading"><h5>Here you can change the properties of the processor</h5>
                 </div>
                 <div class="panel-body">
                     <form action="/web/changeFineFactors.do" method="post" th:object="${fineFactorChangeDTO}">
@@ -26,11 +25,23 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <input type="text"
-                                           th:field="*{emissionFactor}" class="form-control input-sm"
-                                           placeholder="Enter greeting here" tabindex="1">
+                                           th:field="*{emissionfinefactor}" class="form-control input-sm"
+                                           placeholder="EmissionFactor" tabindex="1">
                                     <input type="text"
-                                           th:field="*{speedFactor}" class="form-control input-sm"
-                                           placeholder="Enter greeting here" tabindex="1">
+                                           th:field="*{speedfinefactor}" class="form-control input-sm"
+                                           placeholder="SpeedFactor" tabindex="1">
+                                    <input type="text"
+                                           th:field="*{emissionTime}" class="form-control input-sm"
+                                           placeholder="Time between fines (Emission)" tabindex="1">
+                                    <input type="text"
+                                           th:field="*{timeframeSnelheid}" class="form-control input-sm"
+                                           placeholder="Time for buffered messages" tabindex="1">
+                                    <input type="text"
+                                           th:field="*{maxretries}" class="form-control input-sm"
+                                           placeholder="Max Retries in case of fail" tabindex="1">
+                                    <input type="text"
+                                           th:field="*{retrydelay}" class="form-control input-sm"
+                                           placeholder="Time between retries" tabindex="1">
                                 </div>
 
                             </div>

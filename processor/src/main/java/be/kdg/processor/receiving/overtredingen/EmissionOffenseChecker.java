@@ -8,21 +8,18 @@ import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.processor.receiving.adapters.CameraAdapter;
 import be.kdg.processor.receiving.adapters.LicensePlateAdapter;
 import be.kdg.processor.receiving.configs.PropertiesConfig;
+import be.kdg.processor.web.services.FineService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
-import org.springframework.retry.RetryPolicy;
 import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * The EmissionOffense class will check with every message that arrived if the camera that the car has passed has a higher Euronorm number than the car itself. If this is the case
@@ -38,19 +35,15 @@ public class EmissionOffenseChecker implements OffenseChecker, ApplicationListen
     private final CameraAdapter ca;
     private final LicensePlateAdapter lps;
     private static final Logger LOGGER = LoggerFactory.getLogger(EmissionOffenseChecker.class);
-    private ConcurrentHashMap<String, LocalDateTime> criminals;
-    private long emissionTime;
     private final EmissionCalculator emissionCalculator;
-    private String privateDelay;
     private final PropertiesConfig propertiesConfig;
+    private final FineService fineService;
 
     @Autowired
-    public EmissionOffenseChecker(EmissionCalculator emissionCalculator, CameraAdapter ca, LicensePlateAdapter lps, PropertiesConfig propertiesConfig) {
+    public EmissionOffenseChecker(EmissionCalculator emissionCalculator, CameraAdapter ca, LicensePlateAdapter lps, PropertiesConfig propertiesConfig, FineService fineService) {
         this.propertiesConfig = propertiesConfig;
-        this.criminals = new ConcurrentHashMap<>();
+        this.fineService = fineService;
         this.emissionCalculator = emissionCalculator;
-        this.emissionTime = propertiesConfig.getEmissionTime();
-        this.privateDelay = String.valueOf(propertiesConfig.getRetrydelay());
         this.ca = ca;
         this.lps = lps;
     }
@@ -59,10 +52,10 @@ public class EmissionOffenseChecker implements OffenseChecker, ApplicationListen
     @Override
     public void handleMessage(CameraMessage m) throws Exception {
         RetryTemplate rt = new RetryTemplate();
-        RetryPolicy retryPolicy = new SimpleRetryPolicy();
-        ((SimpleRetryPolicy) retryPolicy).setMaxAttempts(propertiesConfig.getMaxretries());
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(propertiesConfig.getMaxretries());
         FixedBackOffPolicy bop = new FixedBackOffPolicy();
-        ((FixedBackOffPolicy) bop).setBackOffPeriod(propertiesConfig.getRetrydelay());
+        bop.setBackOffPeriod(propertiesConfig.getRetrydelay());
         rt.setRetryPolicy(retryPolicy);
         rt.setBackOffPolicy(bop);
         rt.setThrowLastExceptionOnExhausted(true);
@@ -74,22 +67,11 @@ public class EmissionOffenseChecker implements OffenseChecker, ApplicationListen
                 LicensePlateInfo perp = lps.askInfo(m.getLicensePlate());
 
                 if (perp.getEuroNumber() < emission.getEuroNorm()) {
-                    emissionCalculator.calculateFine(propertiesConfig.getEmissionfinefactor(), emission.getCameraId(), perp.getEuroNumber(), emission.getEuroNorm(), m.getTimestamp());
-                    LOGGER.info("auto: " + perp.getPlateId() + " has an emissionOffense.");
+                    if (!fineService.checkfordoubles(m,propertiesConfig.getEmissionTime()).isPresent()) {
+                        emissionCalculator.calculateFine(propertiesConfig.getEmissionfinefactor(), emission.getCameraId(), perp.getEuroNumber(), emission.getEuroNorm(), m.getTimestamp(),m.getLicensePlate());
+                        LOGGER.info("auto: " + perp.getPlateId() + " has an emissionOffense.");
 
-//                            if (!criminals.containsKey(perp.getPlateId())) {
-//                                criminals.put(perp.getPlateId(), m.getTimestamp());
-//
-//                                emissionCalculator.calculateFine(propertiesConfig.getEmissionfinefactor(), emission.getCameraId(), perp.getEuroNumber(), emission.getEuroNorm(), m.getTimestamp());
-//
-//                                LOGGER.info("auto: " + perp.getPlateId() + " has an emissionOffense.");
-//                            } else {
-//                                LocalDateTime lastTime = criminals.get(perp.getPlateId());
-//                                if (lastTime.until(m.getTimestamp(), ChronoUnit.SECONDS) > emissionTime) {
-//                                    criminals.replace(perp.getPlateId(), m.getTimestamp());
-//                                    LOGGER.info("auto: " + perp.getPlateId() + " has another emissionOffense.");
-//                                }
-//                            }
+                    }
                 }
 
                 return null;
