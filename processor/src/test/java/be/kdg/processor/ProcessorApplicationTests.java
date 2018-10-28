@@ -1,6 +1,6 @@
 package be.kdg.processor;
 
-import be.kdg.processor.receiving.overtredingen.EmissionOffense;
+import be.kdg.processor.receiving.overtredingen.EmissionOffenseChecker;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.CameraServiceProxy;
@@ -19,7 +19,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
+import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -28,7 +30,7 @@ public class ProcessorApplicationTests {
     private CameraServiceProxy csp = new CameraServiceProxy();
     private static final Logger LOGGER = LoggerFactory.getLogger(ProcessorApplicationTests.class);
     @Autowired
-    private EmissionOffense emissionOffense;
+    private EmissionOffenseChecker emissionOffenseChecker;
     @Autowired
     private MockMvc mockMvc;
 
@@ -50,8 +52,8 @@ public class ProcessorApplicationTests {
 
     @Test
     public void emissieDetectieTest() throws Exception {
-       emissionOffense.handleMessage(new CameraMessage(3,"1-ABC-123", LocalDateTime.now()));
-       mockMvc.perform(MockMvcRequestBuilders.get("/api/fine/getall")).andDo(print());
+       emissionOffenseChecker.handleMessage(new CameraMessage(3,"1-ABC-123", LocalDateTime.now()));
+       mockMvc.perform(MockMvcRequestBuilders.get("/api/fines")).andDo(print()).andExpect(content().string(containsString("\"cameraId\":3")));
     }
 
 }

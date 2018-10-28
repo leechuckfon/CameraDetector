@@ -20,8 +20,8 @@ public class SpeedCalculator implements FineCalculator {
 
 
     @Override
-        public void calculateFine(int boetefactor, int cameraId, int overtredingsgetal, int maxtoegelatengetal, LocalDateTime overtredingsTijd) {
-        /*echte boeteberekening nog te doen*/
-            fineService.saveFine(new Fine(FineType.SPEED,(overtredingsgetal-maxtoegelatengetal)*boetefactor,cameraId,String.format("Er werd %d gereden op een segment waar het maximum %d was",overtredingsgetal,maxtoegelatengetal),overtredingsTijd));
-        }
+    public void calculateFine(int boetefactor, int cameraId, int overtredingsgetal, int maxtoegelatengetal, LocalDateTime overtredingsTijd) {
+        int fee = (overtredingsgetal - maxtoegelatengetal) * boetefactor;
+        fineService.saveFine(new Fine(FineType.SPEED, fee, cameraId, String.format("Er werd %d gereden op een segment waar het maximum %d was", overtredingsgetal, maxtoegelatengetal), overtredingsTijd));
+    }
 }

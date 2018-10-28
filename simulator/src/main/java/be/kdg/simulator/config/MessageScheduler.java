@@ -5,6 +5,7 @@ import be.kdg.simulator.posting.messengers.Messenger;
 import be.kdg.simulator.model.CameraMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.AmqpIOException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
@@ -47,12 +48,15 @@ public class MessageScheduler {
             if (cam.getDelay() != -1) {
                 delay = cam.getDelay();
                 scheduler.schedule(this::tick, delay, TimeUnit.MILLISECONDS);
-                mess.sendMessage(cam);
+                try {
+                    mess.sendMessage(cam);
+                }catch (AmqpIOException amqpException) {
+                    LOGGER.error(amqpException.getMessage());
+                }
                 LOGGER.info(cam + "is verzonden");
             }
         } else {
-            scheduler.shutdown();
-            return;
+            System.exit(0);
         }
     }
 }

@@ -10,9 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import java.util.List;
 
 /**
@@ -21,6 +19,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api")
+@RefreshScope
 public class FineRestController {
     private final FineService fineService;
     private final ModelMapper modelMapper;
@@ -40,36 +39,28 @@ public class FineRestController {
     @PutMapping("/approvefine/{id}")
     public ResponseEntity<FineDTO> approve(@PathVariable long id) throws FineException {
         Fine fineIN = fineService.loadFine(id);
-        fineIN.setApproved(true);
-        Fine geupdateFine =  fineService.saveFine(fineIN);
-        return new ResponseEntity<>(modelMapper.map(geupdateFine, FineDTO.class), HttpStatus.ACCEPTED);
+        Fine updatedFine =  fineService.approveFine(fineIN);
+        return new ResponseEntity<>(modelMapper.map(updatedFine, FineDTO.class), HttpStatus.ACCEPTED);
     }
 
     @PutMapping("/changeFine/{id}")
-    public ResponseEntity<FineDTO> changeFine(@PathVariable long id, @RequestBody FineChangeDTO boeteAanpassing) throws FineException {
-
+    public ResponseEntity<FineDTO> changeFine(@PathVariable long id, @RequestBody FineChangeDTO fineChange) throws FineException {
         Fine fineIN = fineService.loadFine(id);
-        fineIN.setFee(Integer.parseInt(boeteAanpassing.getNewFee()));
-        fineIN.setMotivation(boeteAanpassing.getMotivation());
-        Fine geupdateFine =  fineService.saveFine(fineIN);
-        return new ResponseEntity<>(modelMapper.map(geupdateFine, FineDTO.class), HttpStatus.ACCEPTED);
+        Fine updatedFine =  fineService.changeFine(fineIN,fineChange);
+        return new ResponseEntity<>(modelMapper.map(updatedFine, FineDTO.class), HttpStatus.ACCEPTED);
     }
 
 
     @PutMapping("/disapproveFine/{id}")
     public ResponseEntity<FineDTO> disapprove(@PathVariable long id) throws FineException {
         Fine fineIN = fineService.loadFine(id);
-        fineIN.setApproved(false);
-        Fine geupdateFine =  fineService.saveFine(fineIN);
-        return new ResponseEntity<>(modelMapper.map(geupdateFine, FineDTO.class), HttpStatus.ACCEPTED);
+        Fine updatedFine =  fineService.unapproveFine(fineIN);
+        return new ResponseEntity<>(modelMapper.map(updatedFine, FineDTO.class), HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/fines/{begin}/{end}")
     public ResponseEntity<ListFineDTO> filterDate(@PathVariable String begin, @PathVariable String end) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate beginSearch = LocalDate.parse(begin,dtf);
-        LocalDate eindSearch = LocalDate.parse(end,dtf);
-        List<Fine> filtered = fineService.filter(beginSearch,eindSearch);
+        List<Fine> filtered = fineService.filter(begin,end);
         ListFineDTO fineList = new ListFineDTO(filtered);
         return new ResponseEntity<>(fineList,HttpStatus.OK);
     }

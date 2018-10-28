@@ -1,11 +1,13 @@
 package be.kdg.processor.web.services;
 
 import be.kdg.processor.model.fine.Fine;
+import be.kdg.processor.web.dto.FineChangeDTO;
 import be.kdg.processor.web.repos.FineRepo;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,6 +19,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class FineService {
     private final FineRepo fineRepo;
+
 
     public FineService(FineRepo fineRepo) {
         this.fineRepo = fineRepo;
@@ -43,9 +46,29 @@ public class FineService {
         throw new FineException("geen Boetes gevonden.");
     }
 
-    public List<Fine> filter(LocalDate beginSearch, LocalDate eindSearch) {
-    List<Fine> alleFines = fineRepo.findAll();
-    List<Fine> gefilterdeFines = alleFines.stream().filter(x -> x.getOffenseTime().isBefore(eindSearch.atStartOfDay()) && x.getOffenseTime().isAfter(beginSearch.atStartOfDay())).collect(Collectors.toList());
-    return gefilterdeFines;
+    public List<Fine> filter(String beginSearch, String eindSearch) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate startOfSearch = LocalDate.parse(beginSearch,dtf);
+        LocalDate endOfSearch = LocalDate.parse(eindSearch,dtf);
+        List<Fine> alleFines = fineRepo.findAll();
+        List<Fine> gefilterdeFines = alleFines.stream().filter(x -> x.getOffenseTime().isBefore(endOfSearch.atStartOfDay()) && x.getOffenseTime().isAfter(startOfSearch.atStartOfDay())).collect(Collectors.toList());
+        return gefilterdeFines;
+    }
+
+    public Fine approveFine(Fine unapprovedfine) {
+        unapprovedfine.setApproved(true);
+        return this.saveFine(unapprovedfine);
+    }
+
+    public Fine changeFine(Fine fineIN, FineChangeDTO fineChange) {
+        fineIN.setFee(Integer.parseInt(fineChange.getNewFee()));
+        fineIN.setMotivation(fineChange.getMotivation());
+        return this.saveFine(fineIN);
+    }
+
+    public Fine unapproveFine(Fine fineIN) {
+        fineIN.setApproved(false);
+        return this.saveFine(fineIN);
     }
 }
+

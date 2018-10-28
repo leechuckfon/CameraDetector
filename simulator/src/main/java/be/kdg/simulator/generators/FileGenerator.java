@@ -43,7 +43,7 @@ public class FileGenerator implements MessageGenerator{
                     splittedLine[0]="-9999";
                 }
                 try {
-                    ldt = ldt.plusNanos(Long.parseLong(splittedLine[2])*100000);
+                    ldt = ldt.plusNanos(Long.parseLong(splittedLine[2])*1000000);
                     cmL.add(new CameraMessage(Integer.parseInt(splittedLine[0]), splittedLine[1], ldt  , Integer.parseInt(splittedLine[2])));
                 } catch (NumberFormatException e) {
                     LOGGER.error("Er is een string waardat er een nummer verwacht wordt");

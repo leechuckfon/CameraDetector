@@ -4,6 +4,7 @@ import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.sa.services.LicensePlateNotFoundException;
 import be.kdg.sa.services.LicensePlateServiceProxy;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -20,6 +21,7 @@ public class LicensePlateAdapter {
         this.lps = new LicensePlateServiceProxy();
     }
 
+    @Cacheable("Licenses")
     public LicensePlateInfo askInfo(String plate) throws IOException, LicensePlateNotFoundException {
         LicensePlateInfo lincensePlateInfo;
 

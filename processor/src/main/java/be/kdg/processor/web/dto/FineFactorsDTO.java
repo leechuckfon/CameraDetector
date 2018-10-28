@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class FinefactorsDTO {
+public class FineFactorsDTO {
     private int emissionfinefactors;
     private int speedfinefactors;
 }

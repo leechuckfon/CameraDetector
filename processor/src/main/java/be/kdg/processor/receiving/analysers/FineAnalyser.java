@@ -1,8 +1,8 @@
 package be.kdg.processor.receiving.analysers;
 
 import be.kdg.processor.model.CameraMessage;
-import be.kdg.processor.receiving.overtredingen.EmissionOffense;
-import be.kdg.processor.receiving.overtredingen.SpeedOffense;
+import be.kdg.processor.receiving.overtredingen.EmissionOffenseChecker;
+import be.kdg.processor.receiving.overtredingen.SpeedOffenseChecker;
 import be.kdg.sa.services.CameraNotFoundException;
 import be.kdg.sa.services.LicensePlateNotFoundException;
 import org.slf4j.Logger;
@@ -10,19 +10,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
-
 /**
- * The FineAnalyser will delegate every received CameraMessage to every Offense Object to see if an offense has occurred.
+ * The FineAnalyser will delegate every received CameraMessage to every OffenseChecker Object to see if an offense has occurred.
  */
 
 @Component
 public class FineAnalyser {
     private static final Logger LOGGER = LoggerFactory.getLogger(FineAnalyser.class);
     @Autowired
-    private EmissionOffense eo;
+    private EmissionOffenseChecker eo;
     @Autowired
-    private SpeedOffense so;
+    private SpeedOffenseChecker so;
 
 
     public void checkOffenses(CameraMessage m) {
