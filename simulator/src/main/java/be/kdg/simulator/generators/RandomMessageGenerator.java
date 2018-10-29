@@ -35,6 +35,6 @@ public class RandomMessageGenerator implements MessageGenerator{
             laatsteNummers.append(randomNummer);
 
         }
-        return new CameraMessage(r.nextInt(s),eersteNummer + "-" + letters + "-" + laatsteNummers, LocalDateTime.now());
+        return new CameraMessage(r.nextInt(s),eersteNummer + "-" + letters + "-" + laatsteNummers, LocalDateTime.now(),1000);
     }
 }
