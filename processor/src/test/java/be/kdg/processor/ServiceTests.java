@@ -1,10 +1,7 @@
 package be.kdg.processor;
 
-import be.kdg.processor.model.fine.FineType;
-import be.kdg.processor.model.fine.Fine;
-import be.kdg.processor.web.services.FineService;
+import be.kdg.processor.model.fine.calculcators.EmissionCalculator;
 import org.hamcrest.Matchers;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -26,7 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 public class ServiceTests {
     @Autowired
-    private FineService fineService;
+    private EmissionCalculator emissionCalculator;
     @Autowired
     private MockMvc mockMvc;
     private static final Logger LOGGER = LoggerFactory.getLogger(ServiceTests.class);
@@ -35,9 +32,9 @@ public class ServiceTests {
     @Test
     public void serviceTest() {
         /* verander naar de calculator */
-        Assert.assertNotNull(fineService.saveFine(new Fine(FineType.EMISSION,50,1,"OvertredingTest", LocalDateTime.now(),"1-AME-123")));
+        emissionCalculator.calculateFine(100,99,10,2, LocalDateTime.now(),"TESTNUMMERPLAAT");
         try {
-            mockMvc.perform(MockMvcRequestBuilders.get("/api/fine/getall")).andDo(print()).andExpect(content().string(Matchers.containsString("OvertredingTest")));
+            mockMvc.perform(MockMvcRequestBuilders.get("/api/fines")).andDo(print()).andExpect(content().string(Matchers.containsString("TESTNUMMERPLAAT")));
         } catch (Exception e) {
             LOGGER.error("Geen boetes gevonden");
         }

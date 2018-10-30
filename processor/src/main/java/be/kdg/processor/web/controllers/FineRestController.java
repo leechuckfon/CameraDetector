@@ -58,7 +58,7 @@ public class FineRestController {
     }
 
     @GetMapping("/fines/{begin}/{end}")
-    public ResponseEntity<ListFineDTO> filterDate(@PathVariable String begin, @PathVariable String end) {
+    public ResponseEntity<ListFineDTO> filterDate(@PathVariable String begin, @PathVariable String end) throws FineException {
         List<Fine> filtered = fineService.filter(begin,end);
         ListFineDTO fineList = new ListFineDTO(filtered);
         return new ResponseEntity<>(fineList,HttpStatus.OK);

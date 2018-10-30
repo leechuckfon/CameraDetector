@@ -28,19 +28,28 @@ public class UserService implements UserDetailsService {
         return User.withDefaultPasswordEncoder().username(databaseUser.getUsername()).password(databaseUser.getPassword()).roles(databaseUser.getRoles()).build();
     }
 
-    public UserDetails saveNewUser(DatabaseUser udh) {
+    public UserDetails saveNewUser(DatabaseUser udh) throws UserException {
+        if (udh == null) {
+            throw new UserException("user was null");
+        }
         DatabaseUser databaseUserOUT = userRepo.save(udh);
         return User.withDefaultPasswordEncoder().username(databaseUserOUT.getUsername()).password(databaseUserOUT.getPassword()).roles(databaseUserOUT.getRoles()).build();
     }
 
-    public UserDetails updateUser(DatabaseUser dbu) {
+    public UserDetails updateUser(DatabaseUser dbu) throws UserException {
+        if (dbu == null) {
+            throw new UserException("user was null");
+        }
         DatabaseUser baseDatabaseUser = userRepo.findUserByUsername(dbu.getUsername());
         baseDatabaseUser.setPassword(dbu.getPassword());
         baseDatabaseUser.setRoles(dbu.getRoles());
         return this.saveNewUser(baseDatabaseUser);
     }
 
-    public int deleteUser(String username) {
+    public int deleteUser(String username) throws UserException {
+        if (username.isEmpty()) {
+            throw new UserException("user was null");
+        }
         return userRepo.deleteByUsername(username);
     }
 

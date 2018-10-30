@@ -37,7 +37,7 @@ public class FineService {
         if (optionalBoete.isPresent()) {
             return optionalBoete.get();
         }
-        throw new FineException("Fine niet gevonden");
+        throw new FineException("Fine not found");
     }
 
     public List<Fine> loadAll() throws FineException {
@@ -45,34 +45,49 @@ public class FineService {
         if (optionalFineList.size() != 0) {
             return optionalFineList;
         }
-        throw new FineException("geen Boetes gevonden.");
+        throw new FineException("No Fines found.");
     }
 
-    public List<Fine> filter(String beginSearch, String eindSearch) {
+    public List<Fine> filter(String beginSearch, String eindSearch) throws FineException {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate startOfSearch = LocalDate.parse(beginSearch,dtf);
         LocalDate endOfSearch = LocalDate.parse(eindSearch,dtf);
         List<Fine> alleFines = fineRepo.findAll();
+        if (alleFines.isEmpty()) {
+            throw new FineException("Fines not found");
+        }
         return alleFines.stream().filter(x -> x.getOffenseTime().isBefore(endOfSearch.atStartOfDay()) && x.getOffenseTime().isAfter(startOfSearch.atStartOfDay())).collect(Collectors.toList());
     }
 
-    public Optional<Fine> checkfordoubles(CameraMessage cm , long timeframe) {
+    public Optional<Fine> checkfordoubles(CameraMessage cm , long timeframe) throws FineException {
         List<Fine> alleFines = fineRepo.findAll();
+        if (alleFines.isEmpty()) {
+            throw new FineException("Fines not found");
+        }
         return alleFines.stream().filter(x -> x.getLicenseplate().equals(cm.getLicensePlate()) && x.getOffenseTime().until(cm.getTimestamp(), ChronoUnit.MILLIS) < timeframe).findFirst();
     }
 
-    public Fine approveFine(Fine unapprovedfine) {
+    public Fine approveFine(Fine unapprovedfine) throws FineException{
+        if (unapprovedfine == null) {
+                throw new FineException("Fines not found");
+        }
         unapprovedfine.setApproved(true);
         return this.saveFine(unapprovedfine);
     }
 
-    public Fine changeFine(Fine fineIN, FineChangeDTO fineChange) {
+    public Fine changeFine(Fine fineIN, FineChangeDTO fineChange) throws FineException{
+        if (fineIN == null) {
+            throw new FineException("Fines not found");
+        }
         fineIN.setFee(Integer.parseInt(fineChange.getNewFee()));
         fineIN.setMotivation(fineChange.getMotivation());
         return this.saveFine(fineIN);
     }
 
-    public Fine unapproveFine(Fine fineIN) {
+    public Fine unapproveFine(Fine fineIN) throws FineException{
+        if (fineIN == null) {
+            throw new FineException("Fines not found");
+        }
         fineIN.setApproved(false);
         return this.saveFine(fineIN);
     }
