@@ -28,7 +28,7 @@ public class UserApiTests {
     private MockMvc mockMvc;
     @Autowired
     private ObjectMapper objectMapper;
-    private static final Logger LOGGER = LoggerFactory.getLogger(ServiceTests.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserApiTests.class);
 
     @Test
     public void createTest(){

@@ -12,15 +12,20 @@ import org.springframework.stereotype.Component;
 
 /**
  * The FineAnalyser will delegate every received CameraMessage to every OffenseChecker Object to see if an offense has occurred.
+ * When making a new type of Fine a new OffenseChecker has to be made, autowired and called from this class.
  */
 
 @Component
 public class FineAnalyser {
     private static final Logger LOGGER = LoggerFactory.getLogger(FineAnalyser.class);
+    private final EmissionOffenseChecker eo;
+    private final SpeedOffenseChecker so;
+
     @Autowired
-    private EmissionOffenseChecker eo;
-    @Autowired
-    private SpeedOffenseChecker so;
+    public FineAnalyser(EmissionOffenseChecker eo, SpeedOffenseChecker so) {
+        this.eo = eo;
+        this.so = so;
+    }
 
 
     public void checkOffenses(CameraMessage m) {

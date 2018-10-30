@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
  * A Fine Object has a id, fineType, fee that has to be paid, cameraId where the fine has been registered
  * the time of when the offense has taken place, extra info about the offense (for a speedFine this would be the max allowed speed and how fast the person was riding at the time of the offense)
  * if the fine has been approved and the motivation if the fee has been changed.
+ *
+ * Every type of fine will be made as a Fine object with FineType as descriminator.
  */
 @Data
 @Entity
