@@ -10,7 +10,7 @@
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
         <meta charset="UTF-8">
-        <title>Welcome</title>
+        <title>Change Properies</title>
     </head>
 <body>
 <div class="container">
@@ -20,7 +20,7 @@
                 <div class="panel-heading"><h5>Here you can change the properties of the processor</h5>
                 </div>
                 <div class="panel-body">
-                    <form action="/web/changeFineFactors.do" method="post" th:object="${fineFactorChangeDTO}">
+                    <form action="/web/changeProperties.do" method="post" th:object="${fineFactorChangeDTO}">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <input type="submit" value="Verstuur" class="btn btn-primary btn-block btn-sm"
+                                <input type="submit" value="send" class="btn btn-primary btn-block btn-sm"
                                        tabindex="2">
                             </div>
                         </div>

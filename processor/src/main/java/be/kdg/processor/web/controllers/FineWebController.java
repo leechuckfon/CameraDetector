@@ -3,7 +3,6 @@ package be.kdg.processor.web.controllers;
 import be.kdg.processor.model.events.PropertiesChangeEvent;
 import be.kdg.processor.receiving.configs.PropertiesConfig;
 import be.kdg.processor.web.dto.FineFactorChangeDTO;
-import be.kdg.processor.web.dto.FineFactorsDTO;
 import be.kdg.processor.web.publishers.PropertiesChangePublisher;
 import be.kdg.processor.web.services.FineService;
 import org.modelmapper.ModelMapper;
@@ -22,31 +21,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class FineWebController implements ApplicationListener<PropertiesChangeEvent> {
 
-    private final FineService fineService;
     private final ModelMapper modelMapper;
     private PropertiesConfig propertiesConfig;
     private PropertiesChangePublisher publisher;
 
     public FineWebController(FineService fineService, ModelMapper modelMapper, PropertiesConfig propertiesConfig,PropertiesChangePublisher propertiesChangePublisher) {
-        this.fineService = fineService;
         this.modelMapper = modelMapper;
         this.propertiesConfig = propertiesConfig;
         publisher = propertiesChangePublisher;
 
     }
 
-    @GetMapping("/finefactors")
-    public ModelAndView showFinefactors(){
-        return new ModelAndView("showboetefactoren","boetefactoren",new FineFactorsDTO(propertiesConfig.getEmissionfinefactor(),propertiesConfig.getSpeedfinefactor()));
-
-    }
-
-    @GetMapping("/changeFineFactors")
+    @GetMapping("/changeProperties")
     public ModelAndView fineFactorForm(FineFactorChangeDTO fineFactorChangeDTO){
         return new ModelAndView("finefactorForm","fineFactorChangeDTO", fineFactorChangeDTO);
     }
 
-    @PostMapping("/changeFineFactors.do")
+    @PostMapping("/changeProperties.do")
     public ModelAndView fineFactorFormDO(FineFactorChangeDTO fineFactorChangeDTO){
         propertiesConfig.setEmissionfinefactor(fineFactorChangeDTO.getEmissionfinefactor());
         propertiesConfig.setSpeedfinefactor(fineFactorChangeDTO.getSpeedfinefactor());

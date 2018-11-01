@@ -20,8 +20,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageReceiver {
     private static final Logger LOGGER = LoggerFactory.getLogger(MessageReceiver.class);
+    private final FineAnalyser ba;
+
     @Autowired
-    private FineAnalyser ba;
+    public MessageReceiver(FineAnalyser ba) {
+        this.ba = ba;
+    }
 
     @Bean
     private SimpleMessageListenerContainer container(ConnectionFactory connectionFactory,

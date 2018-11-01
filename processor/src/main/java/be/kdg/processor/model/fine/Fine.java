@@ -37,14 +37,17 @@ public class Fine {
     private String motivation="Het boetebedrag is niet aangepast.";
     @Column
     private String licenseplate;
+    @Column
+    private String nationalNumber;
 
-    public Fine(FineType type, int fee, int cameraId, String offenseInfo, LocalDateTime offenseTime,String licenseplate) {
+    public Fine(FineType type, int fee, int cameraId, String offenseInfo, LocalDateTime offenseTime,String licenseplate,String nationalNumber) {
         this.type = type;
         this.fee = fee;
         this.offenseTime = offenseTime;
         this.cameraId = cameraId;
         this.offenseInfo = offenseInfo;
         this.licenseplate = licenseplate;
+        this.nationalNumber = nationalNumber;
     }
 
     public Fine changeFee(int newFee, String motivation) {

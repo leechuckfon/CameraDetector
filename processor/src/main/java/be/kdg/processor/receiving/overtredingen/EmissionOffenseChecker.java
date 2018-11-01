@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.retry.RetryCallback;
 import org.springframework.retry.RetryContext;
-import org.springframework.retry.annotation.Recover;
 import org.springframework.retry.backoff.FixedBackOffPolicy;
 import org.springframework.retry.policy.SimpleRetryPolicy;
 import org.springframework.retry.support.RetryTemplate;
@@ -68,7 +67,7 @@ public class EmissionOffenseChecker implements OffenseChecker, ApplicationListen
 
                 if (perp.getEuroNumber() < emission.getEuroNorm()) {
                     if (!fineService.checkfordoubles(m,propertiesConfig.getEmissionTime()).isPresent()) {
-                        emissionCalculator.calculateFine(propertiesConfig.getEmissionfinefactor(), emission.getCameraId(), perp.getEuroNumber(), emission.getEuroNorm(), m.getTimestamp(),m.getLicensePlate());
+                        emissionCalculator.calculateFine(propertiesConfig.getEmissionfinefactor(), emission.getCameraId(), perp.getEuroNumber(), emission.getEuroNorm(), m.getTimestamp(),m.getLicensePlate(),perp.getNationalNumber());
                         LOGGER.info("auto: " + perp.getPlateId() + " has an emissionOffense.");
 
                     }
@@ -78,22 +77,6 @@ public class EmissionOffenseChecker implements OffenseChecker, ApplicationListen
             }
         });
     }
-
-    @Recover
-    public void printException(Exception e) {
-        LOGGER.error(e.getMessage());
-    }
-    /* Vervangen met database check voor tijd
-    @Scheduled(fixedDelay = 60000L)
-    public void deleteDetections() {
-        for (String s : criminals.keySet()) {
-            LocalDateTime ldt = criminals.get(s);
-            Long timeSinceOffense = ldt.until(LocalDateTime.now(), ChronoUnit.SECONDS);
-            if (timeSinceOffense > emissionTime) {
-                criminals.remove(s);
-            }
-        }
-    }*/
 
     @Override
     public void onApplicationEvent(PropertiesChangeEvent event) {

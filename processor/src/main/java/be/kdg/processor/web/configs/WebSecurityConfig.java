@@ -14,11 +14,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/", "/api*","/usapi/createUser","/usapi/user/TestUsername").permitAll().antMatchers("/usapi/user/test").authenticated()
+                .antMatchers("/", "/api*","/usapi/createUser","/usapi/user/TestUsername","/web/showProperties").permitAll().antMatchers("/usapi/user/test","/web/*").authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/usapi/user/test",true)
+                .defaultSuccessUrl("/web/*",true)
                 .permitAll()
                 .and()
                 .logout()

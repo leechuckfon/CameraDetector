@@ -4,7 +4,6 @@ import be.kdg.processor.model.users.DatabaseUser;
 import be.kdg.processor.web.dto.UserCreationDTO;
 import be.kdg.processor.web.services.UserException;
 import be.kdg.processor.web.services.UserService;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,11 +13,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/usapi")
 public class UserRestController {
     private UserService userService;
-    private ModelMapper modelMapper;
 
-    public UserRestController(UserService userService, ModelMapper modelMapper) {
+    public UserRestController(UserService userService) {
         this.userService = userService;
-        this.modelMapper = modelMapper;
     }
 
     @PostMapping("/createUser")

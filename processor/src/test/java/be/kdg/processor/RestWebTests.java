@@ -35,16 +35,16 @@ public class RestWebTests {
 
     @Test
     public void restTest() throws Exception {
-        fineService.saveFine(new Fine(FineType.EMISSION,1000,1,"restTest", LocalDateTime.now(),"2-ABV-357"));
+        fineService.saveFine(new Fine(FineType.EMISSION,1000,1,"restTest", LocalDateTime.now(),"2-ABV-357","someNumber"));
         mockMvc.perform(put("/api/approvefine/1")).andExpect(status().isAccepted()).andDo(print()).andExpect(content().string(containsString("\"approved\":true")));
 
     }
 
     @Test
     public void mvcTest() throws Exception {
-            mockMvc.perform(get("/web/finefactors"))
+            mockMvc.perform(get("/web/showProperties"))
                     .andExpect(status().isOk())
-                    .andExpect(view().name("showboetefactoren"));
+                    .andExpect(view().name("showproperties"));
     }
 
 }

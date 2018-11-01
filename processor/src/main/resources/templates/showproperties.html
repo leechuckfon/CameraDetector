@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
+    <link rel="icon" th:href="@{/static/images/favicon.ico}">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" media="screen"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" media="screen"/>
+
+    <!-- Scripts -->
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Properties</title>
 </head>
 <body>
 <table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Property Name</th>
+        <th scope="col">Value</th>
+    </tr>
+    </thead>
+    <tbody>
     <tr>
         <td>SpeedFineFactor : </td>
         <td th:text="${propertiesModel.speedfinefactor}">$</td>
@@ -26,10 +41,12 @@
         <td>Time between retries : </td>
         <td th:text="${propertiesModel.retrydelay}">$ millis</td>
     </tr>
+    </tbody>
     <tr>
         <td>Max amount of retries before giving up : </td>
         <td th:text="${propertiesModel.maxretries}">$ retries</td>
     </tr>
 </table>
+<a href="/web/changeProperties" class="btn btn-primary btn-block btn-sm"> <i class="fa fa-arrow-circle-o-left"></i>&nbsp;Change Properties</a>
 </body>
 </html>

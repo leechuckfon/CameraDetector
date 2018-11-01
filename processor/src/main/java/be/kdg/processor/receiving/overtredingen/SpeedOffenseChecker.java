@@ -3,6 +3,7 @@ package be.kdg.processor.receiving.overtredingen;
 import be.kdg.processor.model.CameraMessage;
 import be.kdg.processor.model.events.PropertiesChangeEvent;
 import be.kdg.processor.model.fine.calculcators.SpeedCalculator;
+import be.kdg.processor.model.licenseplate.LicensePlateInfo;
 import be.kdg.processor.receiving.adapters.CameraAdapter;
 import be.kdg.processor.receiving.adapters.LicensePlateAdapter;
 import be.kdg.processor.receiving.configs.PropertiesConfig;
@@ -94,6 +95,7 @@ public class SpeedOffenseChecker implements ApplicationListener<PropertiesChange
             if (beginningEnd.get(s).size() > 1) {
                 CameraMessage begin = beginningEnd.get(s).get(0);
                 CameraMessage eind = beginningEnd.get(s).get(1);
+                LicensePlateInfo info =   lps.askInfo(begin.getLicensePlate());
                 int max_snelheid = ca.AskInfo(begin.getId()).getSegment().getSpeedLimit();
                 LocalDateTime b = begin.getTimestamp();
                 LocalDateTime e = eind.getTimestamp();
@@ -103,7 +105,7 @@ public class SpeedOffenseChecker implements ApplicationListener<PropertiesChange
                 if (speed > max_snelheid) {
                     /* maak fine */
                     LOGGER.info(begin.getLicensePlate() + " heeft een snelheidsboete.");
-                    speedCalculator.calculateFine(propertiesConfig.getSpeedfinefactor(), eind.getId(), Math.round(speed), max_snelheid, eind.getTimestamp(),begin.getLicensePlate());
+                    speedCalculator.calculateFine(propertiesConfig.getSpeedfinefactor(), eind.getId(), Math.round(speed), max_snelheid, eind.getTimestamp(),begin.getLicensePlate(),info.getNationalNumber());
                     bufferedMessages.removeAll(bufferedMessages.stream().filter(x -> x.getLicensePlate().equals(s)).collect(Collectors.toList()));
                 }
             }
