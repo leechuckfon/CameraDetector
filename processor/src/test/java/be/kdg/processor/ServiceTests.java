@@ -32,7 +32,7 @@ public class ServiceTests {
     @Test
     public void serviceTest() {
         /* verander naar de calculator */
-        emissionCalculator.calculateFine(100,99,10,2, LocalDateTime.now(),"TESTNUMMERPLAAT");
+        emissionCalculator.calculateFine(100,99,10,2, LocalDateTime.now(),"TESTNUMMERPLAAT","015142");
         try {
             mockMvc.perform(MockMvcRequestBuilders.get("/api/fines")).andDo(print()).andExpect(content().string(Matchers.containsString("TESTNUMMERPLAAT")));
         } catch (Exception e) {

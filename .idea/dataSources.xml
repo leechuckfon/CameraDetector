@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="BoeteDB" uuid="442809ef-bbb2-45cb-b126-8ec314274ed7">
+    <data-source source="LOCAL" name="BoeteDB" uuid="4642e594-4198-404f-a9d0-88f831e4a8b3">
       <driver-ref>h2.unified</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:mem:BoeteDB;DB_CLOSE_DELAY=1;DB_CLOSE_ON_EXIT=FALSE</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="BoeteDB [2]" uuid="4de2cf1a-d744-48be-9f3b-eb826f55c5d9">
-      <driver-ref>h2.unified</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:./BoeteDB;AUTO_SERVER=TRUE</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="boeteTest" uuid="8902b369-4800-4d80-8617-299f9a0942ad">
-      <driver-ref>h2.unified</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.h2.Driver</jdbc-driver>
-      <jdbc-url>jdbc:h2:./boeteTest;AUTO_SERVER=TRUE</jdbc-url>
+      <jdbc-url>jdbc:h2:~/BoeteDB;AUTO_SERVER=TRUE</jdbc-url>
     </data-source>
   </component>
 </project>

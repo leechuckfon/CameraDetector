@@ -59,11 +59,8 @@ public class FineService {
         return alleFines.stream().filter(x -> x.getOffenseTime().isBefore(endOfSearch.atStartOfDay()) && x.getOffenseTime().isAfter(startOfSearch.atStartOfDay())).collect(Collectors.toList());
     }
 
-    public Optional<Fine> checkfordoubles(CameraMessage cm , long timeframe) throws FineException {
+    public Optional<Fine> checkfordoubles(CameraMessage cm , long timeframe) {
         List<Fine> alleFines = fineRepo.findAll();
-        if (alleFines.isEmpty()) {
-            throw new FineException("Fines not found");
-        }
         return alleFines.stream().filter(x -> x.getLicenseplate().equals(cm.getLicensePlate()) && x.getOffenseTime().until(cm.getTimestamp(), ChronoUnit.MILLIS) < timeframe).findFirst();
     }
 
