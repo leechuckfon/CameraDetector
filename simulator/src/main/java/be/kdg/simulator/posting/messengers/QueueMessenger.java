@@ -16,11 +16,9 @@ import org.springframework.stereotype.Component;
 public class QueueMessenger implements Messenger {
 
     private final RabbitTemplate rabbitTemplate;
-    private final MessageGenerator messageGenerator;
 
     public QueueMessenger( RabbitTemplate rabbitTemplate,MessageGenerator messageGenerator) {
         this.rabbitTemplate = rabbitTemplate;
-        this.messageGenerator = messageGenerator;
     }
 
 

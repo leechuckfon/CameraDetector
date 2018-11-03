@@ -60,7 +60,6 @@ public class MessageScheduler {
 
                 if (type.equals("random")) {
                     if (beginEndRushHours.isEmpty()) {
-                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
                         String[] allRushes = rushHours.split(",");
                         for (String s : allRushes) {
                             String[] beginEnd = s.split("-");
